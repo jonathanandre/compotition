@@ -5,13 +5,18 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import fr.solutec.entities.Amitie;
 import fr.solutec.entities.Utilisateur;
+import fr.solutec.repository.AmitieRepository;
 import fr.solutec.repository.UtilisateurRepository;
 
 @SpringBootApplication
 public class CompotitionApplication implements CommandLineRunner {
 	@Autowired
 	private UtilisateurRepository utilisateurRepos;
+
+	@Autowired
+	private AmitieRepository amitieRepos;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CompotitionApplication.class, args);
@@ -29,5 +34,9 @@ public class CompotitionApplication implements CommandLineRunner {
 
 		utilisateurRepos.save(u1);
 		utilisateurRepos.save(u2);
+
+		Amitie a1 = new Amitie(null, u1, u2, false);
+		amitieRepos.save(a1);
+
 	}
 }
