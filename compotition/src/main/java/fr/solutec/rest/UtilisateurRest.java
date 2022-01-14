@@ -22,4 +22,9 @@ public class UtilisateurRest {
 		return utilisateurRepos.findByLoginAndMdp(u.getLogin(), u.getMdp());
 	}
 
+	@PostMapping("inscription")
+	public Utilisateur inscription(@RequestBody Utilisateur u) throws Exception {
+		return utilisateurRepos.save(u);
+	}
+
 }
