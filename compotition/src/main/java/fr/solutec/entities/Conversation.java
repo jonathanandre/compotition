@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 
-public class Conversation {
+public class Conversation { // MessagedeGroupe serait un nom plus exact
 	@Id
 	@GeneratedValue
 	private Long id;
