@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.solutec.entities.Groupe;
+import fr.solutec.entities.AppartenanceGroupe;
 import fr.solutec.repository.AppartenanceGroupeRepository;
 
 @RestController
@@ -18,7 +18,7 @@ public class AppartenanceGroupeRest {
 	private AppartenanceGroupeRepository appartenanceGroupeRepos;
 
 	@GetMapping("groupe/mes-groupes/{id}")
-	public List<Groupe> getGroupesByIdUtilisateur(@PathVariable Long id) {
+	public List<AppartenanceGroupe> getGroupesByIdUtilisateur(@PathVariable Long id) {
 		return appartenanceGroupeRepos.findByUtilisateurId(id);
 	}
 
