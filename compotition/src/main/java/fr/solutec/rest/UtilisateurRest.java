@@ -20,22 +20,22 @@ public class UtilisateurRest {
 	@Autowired
 	private UtilisateurRepository utilisateurRepos;
 
-	@PostMapping("connexion")
+	@PostMapping("utilisateur/connexion")
 	public Optional<Utilisateur> connexion(@RequestBody Utilisateur u) {
 		return utilisateurRepos.findByLoginAndMdp(u.getLogin(), u.getMdp());
 	}
 
-	@PostMapping("inscription")
-	public Utilisateur inscription(@RequestBody Utilisateur u) throws Exception {
+	@PostMapping("utilisateur/inscription")
+	public Utilisateur inscription(@RequestBody Utilisateur u) {
 		return utilisateurRepos.save(u);
 	}
 
-	@GetMapping("informations-utilisateur/{id}")
+	@GetMapping("utilisateur/informations/{id}")
 	public Optional<Utilisateur> getInformationsUtilisateurById(@PathVariable Long id) {
 		return utilisateurRepos.findById(id);
 	}
 
-	@PutMapping("modifier-informations-utilisateur")
+	@PutMapping("utilisateur/informations/modifier")
 	public Utilisateur setInformationsUtilisateur(@RequestBody Utilisateur u) {
 		return utilisateurRepos.save(u);
 	}
