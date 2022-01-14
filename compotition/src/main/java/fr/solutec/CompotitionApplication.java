@@ -9,8 +9,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import fr.solutec.entities.Amitie;
+import fr.solutec.entities.Message;
 import fr.solutec.entities.Utilisateur;
 import fr.solutec.repository.AmitieRepository;
+import fr.solutec.repository.MessageRepository;
 import fr.solutec.repository.UtilisateurRepository;
 
 @SpringBootApplication
@@ -20,6 +22,9 @@ public class CompotitionApplication implements CommandLineRunner {
 
 	@Autowired
 	private AmitieRepository amitieRepos;
+
+	@Autowired
+	private MessageRepository messageRepos;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CompotitionApplication.class, args);
@@ -42,6 +47,12 @@ public class CompotitionApplication implements CommandLineRunner {
 
 		Amitie a1 = new Amitie(null, u1, u2, false);
 		amitieRepos.save(a1);
+
+		Message m1 = new Message(null, "Hello world", u1, a1);
+		messageRepos.save(m1);
+
+		Message m2 = new Message(null, "How do you do", u2, a1);
+		messageRepos.save(m2);
 
 	}
 }
