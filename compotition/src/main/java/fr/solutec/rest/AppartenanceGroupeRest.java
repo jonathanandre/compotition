@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.solutec.entities.AppartenanceGroupe;
@@ -25,6 +27,12 @@ public class AppartenanceGroupeRest {
 	@GetMapping("groupes/classement/{id}")
 	public List<AppartenanceGroupe> getClassementByIdGroupe(@PathVariable Long id) {
 		return appartenanceGroupeRepos.findByGroupeId(id);
+
+	}
+
+	@PutMapping("groupes/ajout-personnes")
+	public AppartenanceGroupe putUtilisateursDansGroupe(@RequestBody AppartenanceGroupe ag) {
+		return appartenanceGroupeRepos.save(ag);
 
 	}
 }
