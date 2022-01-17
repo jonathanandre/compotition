@@ -10,11 +10,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import fr.solutec.entities.Amitie;
 import fr.solutec.entities.AppartenanceGroupe;
+import fr.solutec.entities.Conversation;
 import fr.solutec.entities.Groupe;
 import fr.solutec.entities.Message;
 import fr.solutec.entities.Utilisateur;
 import fr.solutec.repository.AmitieRepository;
 import fr.solutec.repository.AppartenanceGroupeRepository;
+import fr.solutec.repository.ConversationRepository;
 import fr.solutec.repository.GroupeRepository;
 import fr.solutec.repository.MessageRepository;
 import fr.solutec.repository.UtilisateurRepository;
@@ -31,6 +33,8 @@ public class CompotitionApplication implements CommandLineRunner {
 	private GroupeRepository groupeRepos;
 	@Autowired
 	private AppartenanceGroupeRepository appartenanceGroupeRepos;
+	@Autowired
+	private ConversationRepository conversationRepos;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CompotitionApplication.class, args);
@@ -88,6 +92,25 @@ public class CompotitionApplication implements CommandLineRunner {
 		appartenanceGroupeRepos.save(ag5);
 		appartenanceGroupeRepos.save(ag6);
 		appartenanceGroupeRepos.save(ag7);
+
+		Conversation c1 = new Conversation(null, "On se retrouve à quelle heure", u1, g1);
+		Conversation c2 = new Conversation(null, "à 10 h", u1, g1);
+		Conversation c3 = new Conversation(null,
+				"Attend jpeux pas j'ai un test demain, à 8 h c'est mieux c'est moins tard", u2, g1);
+		Conversation c4 = new Conversation(null, "va pour 8h pour moi", u1, g1);
+		Conversation c5 = new Conversation(null, "il fait froid aujourd'hui", u2, g2);
+		Conversation c6 = new Conversation(null, "oui", u1, g2);
+		Conversation c7 = new Conversation(null, "non", u3, g2);
+		Conversation c8 = new Conversation(null, "testing", u3, null);
+
+		conversationRepos.save(c1);
+		conversationRepos.save(c2);
+		conversationRepos.save(c3);
+		conversationRepos.save(c4);
+		conversationRepos.save(c5);
+		conversationRepos.save(c6);
+		conversationRepos.save(c7);
+		conversationRepos.save(c8);
 
 	}
 }

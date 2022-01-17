@@ -68,7 +68,7 @@ public class MessageRest {
 		return messageRepos.save(m);
 	}
 
-	// ajouter un message (à l'intérieur d'une amitié)
+	// enlever message
 	@DeleteMapping("message/{id}")
 	public boolean enleverMessage(@PathVariable Long id) {
 		Optional<Message> m = messageRepos.findById(id);
