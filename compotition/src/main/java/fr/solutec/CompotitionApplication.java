@@ -77,8 +77,10 @@ public class CompotitionApplication implements CommandLineRunner {
 		utilisateurRepos.save(u4);
 		utilisateurRepos.save(u5);
 
-		Amitie a1 = new Amitie(null, u1, u2, false);
+		Amitie a1 = new Amitie(null, u1, u2, true);
+		Amitie a2 = new Amitie(null, u1, u3, false);
 		amitieRepos.save(a1);
+		amitieRepos.save(a2);
 
 		Message m1 = new Message(null, "Hello world", u1, a1);
 		Message m2 = new Message(null, "How do you do", u2, a1);
