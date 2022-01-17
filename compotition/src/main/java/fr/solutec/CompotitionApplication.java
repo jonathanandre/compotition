@@ -46,6 +46,7 @@ public class CompotitionApplication implements CommandLineRunner {
 		System.out.println("Compotition : lancement des instructions perso");
 
 		DateFormat d = new SimpleDateFormat("dd/MM/yyyy");
+		DateFormat d2 = new SimpleDateFormat("dd MMMM yyyy 'à' hh:mm:ss");
 
 		Utilisateur u1 = new Utilisateur(null, "login", "mdp", "Nom", "Prénom", "prenom.nom@mail.com",
 				d.parse("11/11/1997"), false, null, null);
@@ -112,7 +113,8 @@ public class CompotitionApplication implements CommandLineRunner {
 		conversationRepos.save(c7);
 		conversationRepos.save(c8);
 
-		// Competition comp1 = new Compe
+		// Competition comp1 = new Competition("Billard", d2.parse("), null, null, null,
+		// null, null, false, g2)
 
 	}
 }

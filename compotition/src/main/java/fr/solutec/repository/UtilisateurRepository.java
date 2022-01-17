@@ -10,4 +10,6 @@ public interface UtilisateurRepository extends CrudRepository<Utilisateur, Long>
 
 	public Optional<Utilisateur> findByLoginAndMdp(String login, String mdp);
 
+	public Optional<Utilisateur> findByLogin(String login);
+
 }
