@@ -74,13 +74,13 @@ public class CompotitionApplication implements CommandLineRunner {
 		groupeRepos.save(g1);
 		groupeRepos.save(g2);
 
-		AppartenanceGroupe ag1 = new AppartenanceGroupe(u1, g1, null);
-		AppartenanceGroupe ag2 = new AppartenanceGroupe(u2, g1, null);
-		AppartenanceGroupe ag3 = new AppartenanceGroupe(u1, g2, null);
-		AppartenanceGroupe ag4 = new AppartenanceGroupe(u2, g2, null);
-		AppartenanceGroupe ag5 = new AppartenanceGroupe(u3, g2, null);
-		AppartenanceGroupe ag6 = new AppartenanceGroupe(u4, g2, null);
-		AppartenanceGroupe ag7 = new AppartenanceGroupe(u5, g2, null);
+		AppartenanceGroupe ag1 = new AppartenanceGroupe(u1, g1, 3);
+		AppartenanceGroupe ag2 = new AppartenanceGroupe(u2, g1, 4);
+		AppartenanceGroupe ag3 = new AppartenanceGroupe(u1, g2, 105);
+		AppartenanceGroupe ag4 = new AppartenanceGroupe(u2, g2, 610);
+		AppartenanceGroupe ag5 = new AppartenanceGroupe(u3, g2, 53);
+		AppartenanceGroupe ag6 = new AppartenanceGroupe(u4, g2, 12);
+		AppartenanceGroupe ag7 = new AppartenanceGroupe(u5, g2, 900);
 		appartenanceGroupeRepos.save(ag1);
 		appartenanceGroupeRepos.save(ag2);
 		appartenanceGroupeRepos.save(ag3);

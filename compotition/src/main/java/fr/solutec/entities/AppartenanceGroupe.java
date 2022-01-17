@@ -23,6 +23,6 @@ public class AppartenanceGroupe {
 	@ManyToOne
 	private Groupe groupe;
 
-	private Long pointsParUtilisateurDansGroupe;
+	private long pointsParUtilisateurDansGroupe;
 
 }

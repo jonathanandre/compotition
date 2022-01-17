@@ -17,9 +17,14 @@ public class AppartenanceGroupeRest {
 	@Autowired
 	private AppartenanceGroupeRepository appartenanceGroupeRepos;
 
-	@GetMapping("groupe/mes-groupes/{id}")
+	@GetMapping("groupes/mes-groupes/{id}")
 	public List<AppartenanceGroupe> getGroupesByIdUtilisateur(@PathVariable Long id) {
 		return appartenanceGroupeRepos.findByUtilisateurId(id);
 	}
 
+	@GetMapping("groupes/classement/{id}")
+	public List<AppartenanceGroupe> getClassementByIdGroupe(@PathVariable Long id) {
+		return appartenanceGroupeRepos.findByGroupeId(id);
+
+	}
 }
