@@ -40,7 +40,7 @@ public class UtilisateurRest {
 		return utilisateurRepos.save(u);
 	}
 
-	@GetMapping("utilisateur/informations/{login}")
+	@GetMapping("utilisateur/amitie/{login}")
 	public Optional<Utilisateur> getInformationsUtilisateurByLogin(@PathVariable String login) {
 		return utilisateurRepos.findByLogin(login);
 	}
