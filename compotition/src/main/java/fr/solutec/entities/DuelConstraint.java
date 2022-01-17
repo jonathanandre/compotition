@@ -11,6 +11,9 @@ public class DuelConstraint implements Serializable {
 	@SuppressWarnings("unused")
 	private Long adversaire1;
 
+	@SuppressWarnings("unused")
+	private Long adversaire2;
+
 	public DuelConstraint() {
 	}
 }
