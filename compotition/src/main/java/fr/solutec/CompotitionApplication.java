@@ -10,12 +10,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import fr.solutec.entities.Amitie;
 import fr.solutec.entities.AppartenanceGroupe;
+import fr.solutec.entities.Competition;
 import fr.solutec.entities.Conversation;
 import fr.solutec.entities.Groupe;
 import fr.solutec.entities.Message;
 import fr.solutec.entities.Utilisateur;
 import fr.solutec.repository.AmitieRepository;
 import fr.solutec.repository.AppartenanceGroupeRepository;
+import fr.solutec.repository.CompetitionRepository;
 import fr.solutec.repository.ConversationRepository;
 import fr.solutec.repository.GroupeRepository;
 import fr.solutec.repository.MessageRepository;
@@ -35,6 +37,8 @@ public class CompotitionApplication implements CommandLineRunner {
 	private AppartenanceGroupeRepository appartenanceGroupeRepos;
 	@Autowired
 	private ConversationRepository conversationRepos;
+	@Autowired
+	private CompetitionRepository competitionRepos;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CompotitionApplication.class, args);
@@ -113,8 +117,24 @@ public class CompotitionApplication implements CommandLineRunner {
 		conversationRepos.save(c7);
 		conversationRepos.save(c8);
 
-		// Competition comp1 = new Competition("Billard", d2.parse("), null, null, null,
-		// null, null, false, g2)
+		Competition comp1 = new Competition(null, "Billard", d2.parse("2022-01-17 18:30:00"),
+				d2.parse("2022-02-17 18:30:00"), "Club 108, Croissy-sur-Seine", d2.parse("2022-01-17 17:30:00"),
+				"championnat", "Championnat de billard entre l'utilisateur1 et l'utilisateur2 pendant 1 mois", false,
+				g1);
+		Competition comp2 = new Competition(null, "Bière-Pong", d2.parse("2022-01-17 21:30:00"), null,
+				"Crémaillère de Gaël", d2.parse("2022-01-17 17:30:00"), "tournoi",
+				"Bière-pong facon tournoi entre 4 utilisateurs", false, g2);
+		Competition comp3 = new Competition(null, "Fléchette", d2.parse("2022-01-17 21:30:00"), null,
+				"Gite en normandie", null, "match", "Match de fléchettes entre utilisateur1 et utilisateur2", false,
+				g1);
+		Competition comp4 = new Competition(null, "Max de tucs", d2.parse("2022-01-17 21:30:00"),
+				d2.parse("2022-02-17 18:30:00"), null, d2.parse("2022-01-17 17:30:00"), "tournoi", "tournoi ouvert",
+				false, null);
+
+		competitionRepos.save(comp1);
+		competitionRepos.save(comp2);
+		competitionRepos.save(comp3);
+		competitionRepos.save(comp4);
 
 	}
 }
