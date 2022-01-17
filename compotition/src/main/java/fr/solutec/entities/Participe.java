@@ -1,7 +1,5 @@
 package fr.solutec.entities;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
@@ -15,21 +13,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@IdClass(DuelConstraint.class)
-public class Duel {
+@IdClass(ParticipeConstraint.class)
+public class Participe {
+
+	@Id
+	@ManyToOne
+	private Utilisateur utilisateur;
+
 	@Id
 	@ManyToOne
 	private Competition competition;
 
-	@Id
-	@ManyToOne
-	private Utilisateur adversaire1;
-
-	@Id
-	@ManyToOne
-	private Utilisateur adversaire2;
-
-	private Date date;
-	private int scoreAdversaire1;
-	private int scoreAdversaire2;
 }

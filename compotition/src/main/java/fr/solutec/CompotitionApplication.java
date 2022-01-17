@@ -112,5 +112,7 @@ public class CompotitionApplication implements CommandLineRunner {
 		conversationRepos.save(c7);
 		conversationRepos.save(c8);
 
+		// Competition comp1 = new Compe
+
 	}
 }
