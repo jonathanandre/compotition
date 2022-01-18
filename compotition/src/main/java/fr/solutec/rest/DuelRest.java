@@ -21,7 +21,7 @@ public class DuelRest {
 	@Autowired
 	private DuelRepository duelRepos;
 
-	@PostMapping("duel/creer-duels")
+	@PostMapping("duel/creer")
 	public Duel creerDuel(@RequestBody Duel d) {
 		return duelRepos.save(d);
 	}
