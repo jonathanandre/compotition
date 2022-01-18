@@ -1,6 +1,6 @@
 package fr.solutec.rest;
 
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -25,13 +25,30 @@ public class DuelRest {
 		return duelRepos.save(d);
 	}
 
-	@GetMapping("duel/informations/{id}")
-	public Optional<Duel> getInformationsDuelById(@PathVariable Long id) {
-		return duelRepos.findById(id);
+	@GetMapping("duel/informations/{login}")
+	public List<Duel> getDuelsByLogin(@PathVariable String login) {
+		return duelRepos.findByAdversaire1LoginOrAdversaire2Login(login, login);
 	}
 
 	@PutMapping("duel/informations/modifier")
 	public Duel setInformationsDuel(@RequestBody Duel d) {
 		return duelRepos.save(d);
+	}
+
+	@GetMapping("competition/duels/{id}")
+	public List<Duel> getDuelsByLogin(@PathVariable Long id) {
+		return duelRepos.findByCompetitionId(id);
+	}
+
+	@GetMapping("competition/{id}/duels-unique/{login}/{login2}")
+	public Duel getDuelByCompetitionAndAdversaires(@PathVariable Long id, @PathVariable String login,
+			@PathVariable String login2) {
+		return duelRepos.findByCompetitionIdAndAdversaire1LoginAndAdversaire2Login(id, login, login2);
+	}
+
+	@GetMapping("competition/{id}/duels-liste/{login}/{login2}")
+	public List<Duel> getDuelByCompetitionAndUtilisateur(@PathVariable Long id, @PathVariable String login,
+			@PathVariable String login2) {
+		return duelRepos.findByCompetitionIdAndAdversaire1LoginOrAdversaire2Login(id, login, login2);
 	}
 }
