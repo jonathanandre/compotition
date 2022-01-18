@@ -26,4 +26,14 @@ public class ParticipeRest {
 		return participeRepos.save(p);
 	}
 
+//	@GetMapping("competition/participation/{id}")
+//	public Optional<Competition> getInformationsCompetitionById(@PathVariable Long id) {
+//		return competitionRepos.findById(id);
+//	}
+//
+//	@PutMapping("competition/informations/modifier")
+//	public Competition setInformationsCompetition(@RequestBody Competition c) {
+//		return competitionRepos.save(c);
+//	}
+
 }

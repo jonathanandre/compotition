@@ -93,13 +93,24 @@ public class CompotitionApplication implements CommandLineRunner {
 		groupeRepos.save(g1);
 		groupeRepos.save(g2);
 
-		AppartenanceGroupe ag1 = new AppartenanceGroupe(u1, g1, 3);
-		AppartenanceGroupe ag2 = new AppartenanceGroupe(u2, g1, 4);
-		AppartenanceGroupe ag3 = new AppartenanceGroupe(u1, g2, 105);
-		AppartenanceGroupe ag4 = new AppartenanceGroupe(u2, g2, 610);
-		AppartenanceGroupe ag5 = new AppartenanceGroupe(u3, g2, 53);
-		AppartenanceGroupe ag6 = new AppartenanceGroupe(u4, g2, 12);
-		AppartenanceGroupe ag7 = new AppartenanceGroupe(u5, g2, 900);
+		AppartenanceGroupe ag1 = new AppartenanceGroupe(u1, g1, 3, true, d2.parse("17/01/2022 18:30:00"),
+				d2.parse("17/01/2022 18:31:00"));
+		AppartenanceGroupe ag2 = new AppartenanceGroupe(u2, g1, 4, true, d2.parse("17/01/2022 18:30:00"),
+				d2.parse("17/01/2022 18:31:00"));
+		AppartenanceGroupe ag3 = new AppartenanceGroupe(u1, g2, 105, true, d2.parse("17/01/2022 18:30:00"),
+				d2.parse("17/01/2022 18:31:00"));
+		AppartenanceGroupe ag4 = new AppartenanceGroupe(u2, g2, 610, true, d2.parse("17/01/2022 18:30:00"),
+				d2.parse("17/01/2022 18:31:00"));
+		AppartenanceGroupe ag5 = new AppartenanceGroupe(u3, g2, 53, true, d2.parse("17/01/2022 18:30:00"),
+				d2.parse("17/01/2022 18:31:00"));
+		AppartenanceGroupe ag6 = new AppartenanceGroupe(u4, g2, 12, true, d2.parse("17/01/2022 18:30:00"),
+				d2.parse("17/01/2022 18:31:00"));
+		AppartenanceGroupe ag7 = new AppartenanceGroupe(u5, g2, 900, true, d2.parse("17/01/2022 18:30:00"),
+				d2.parse("17/01/2022 18:31:00"));
+		AppartenanceGroupe ag8 = new AppartenanceGroupe(u3, g1, 0, false, d2.parse("17/01/2022 18:30:00"), null);
+		AppartenanceGroupe ag9 = new AppartenanceGroupe(u4, g2, 0, false, d2.parse("17/01/2022 18:30:00"),
+				d2.parse("17/01/2022 18:31:00"));
+
 		appartenanceGroupeRepos.save(ag1);
 		appartenanceGroupeRepos.save(ag2);
 		appartenanceGroupeRepos.save(ag3);
@@ -107,6 +118,8 @@ public class CompotitionApplication implements CommandLineRunner {
 		appartenanceGroupeRepos.save(ag5);
 		appartenanceGroupeRepos.save(ag6);
 		appartenanceGroupeRepos.save(ag7);
+		appartenanceGroupeRepos.save(ag8);
+		appartenanceGroupeRepos.save(ag9);
 
 		Conversation c1 = new Conversation(null, "On se retrouve à quelle heure", u1, g1);
 		Conversation c2 = new Conversation(null, "à 10 h", u1, g1);
