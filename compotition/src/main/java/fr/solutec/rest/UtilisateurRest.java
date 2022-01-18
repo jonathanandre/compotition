@@ -55,7 +55,7 @@ public class UtilisateurRest {
 	public boolean deleteUtilisateur(@PathVariable String login) {
 		Optional<Utilisateur> u = utilisateurRepos.findByLogin(login);
 		if (u.isPresent()) {
-			// utilisateurRepos.deleteById(id)
+			utilisateurRepos.delete(u.get());
 			return true;
 		} else {
 			return false;

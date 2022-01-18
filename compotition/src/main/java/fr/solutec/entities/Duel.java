@@ -15,7 +15,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-//@IdClass(DuelConstraint.class)
 public class Duel {
 
 	@Id

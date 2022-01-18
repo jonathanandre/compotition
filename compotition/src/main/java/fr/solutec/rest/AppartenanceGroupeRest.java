@@ -54,7 +54,7 @@ public class AppartenanceGroupeRest {
 
 	}
 
-	// MARCHE PAS ENCORE Avec id_groupe et login utilisateur
+	// Avec id_groupe et login utilisateur
 	@DeleteMapping("groupes/supprimer-personnes/{id}/{login}")
 	public boolean deleteUtilisateurDansGroupe(@PathVariable Long id, @PathVariable String login) {
 		Optional<AppartenanceGroupe> ag = appartenanceGroupeRepos.findByGroupeIdAndUtilisateurLogin(id, login);
