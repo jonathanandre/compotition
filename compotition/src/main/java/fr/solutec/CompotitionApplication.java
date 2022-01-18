@@ -218,13 +218,13 @@ public class CompotitionApplication implements CommandLineRunner {
 		duelRepos.save(duel13);
 		duelRepos.save(duel14);
 		duelRepos.save(duel15);
-		/*duelRepos.save(duel16);
+		duelRepos.save(duel16);
 		duelRepos.save(duel17);
 		duelRepos.save(duel18);
 		duelRepos.save(duel19);
 		duelRepos.save(duel20);
 		duelRepos.save(duel21);
-		duelRepos.save(duel22);*/
+		duelRepos.save(duel22);
 
 	}
 }
