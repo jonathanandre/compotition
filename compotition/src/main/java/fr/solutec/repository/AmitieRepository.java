@@ -19,6 +19,7 @@ public interface AmitieRepository extends CrudRepository<Amitie, Long> {
 	@Query(value = "SELECT m FROM Amitie m WHERE m.accepted= false AND (m.receveur=?1)")
 	public List<Amitie> findMyInvitationsAsReceveur(Optional<Utilisateur> u);
 
-	public Optional<Amitie> findByEnvoyeurAndReceveur(Optional<Utilisateur> u1, Optional<Utilisateur> u2);
+	@Query(value = "SELECT m FROM Amitie m WHERE m.accepted= false AND m.envoyeur=?1 AND m.receveur=?2")
+	public List<Amitie> findEnvoyeurAndReceveur(Optional<Utilisateur> u1, Optional<Utilisateur> u2);
 
 }

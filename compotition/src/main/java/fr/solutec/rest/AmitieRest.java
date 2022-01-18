@@ -72,10 +72,10 @@ public class AmitieRest {
 	}
 
 	@GetMapping("amitie/reception/{id1}/{id2}")
-	public Optional<Amitie> getPaire(@PathVariable Long id1, @PathVariable Long id2) {
+	public Iterable<Amitie> getPaire(@PathVariable Long id1, @PathVariable Long id2) {
 		Optional<Utilisateur> u1 = utilisateurrepo.findById(id1);
 		Optional<Utilisateur> u2 = utilisateurrepo.findById(id2);
-		return amitieRepo.findByEnvoyeurAndReceveur(u1, u2);
+		return amitieRepo.findEnvoyeurAndReceveur(u1, u2);
 	}
 
 }
