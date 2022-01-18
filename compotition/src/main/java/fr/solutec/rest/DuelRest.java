@@ -40,15 +40,24 @@ public class DuelRest {
 		return duelRepos.findByCompetitionId(id);
 	}
 
-	@GetMapping("competition/{id}/duels-unique/{login}/{login2}")
-	public Duel getDuelByCompetitionAndAdversaires(@PathVariable Long id, @PathVariable String login,
+	// Accéder aux duels d'une compétition entre deux utilisateurs
+	@GetMapping("competition/{id}/duels/{login}/{login2}")
+	public List<Duel> getDuelByCompetitionAndAdversaires(@PathVariable Long id, @PathVariable String login,
 			@PathVariable String login2) {
 		return duelRepos.findByCompetitionIdAndAdversaire1LoginAndAdversaire2Login(id, login, login2);
 	}
 
+	// Accéder aux duels d'un utilisateur dans une compétition
 	@GetMapping("competition/{id}/duels-liste/{login}/{login2}")
 	public List<Duel> getDuelByCompetitionAndUtilisateur(@PathVariable Long id, @PathVariable String login,
 			@PathVariable String login2) {
 		return duelRepos.findByCompetitionIdAndAdversaire1LoginOrAdversaire2Login(id, login, login2);
 	}
+
+	@GetMapping("duel/natif")
+	public List<Object> lesDuels() {
+		return duelRepos.retourDuel();
+
+	}
+
 }

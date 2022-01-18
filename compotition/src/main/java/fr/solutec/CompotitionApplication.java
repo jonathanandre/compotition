@@ -176,31 +176,31 @@ public class CompotitionApplication implements CommandLineRunner {
 		participeRepos.save(p12);
 		participeRepos.save(p13);
 
-		Duel duel1 = new Duel(comp1, u1, u2, d2.parse("17/01/2022 19:30:00"), 10, 3);
-		Duel duel2 = new Duel(comp1, u1, u2, d2.parse("20/01/2022 19:30:00"), 8, 6);
-		Duel duel3 = new Duel(comp1, u1, u2, d2.parse("23/01/2022 19:30:00"), 1, 5);
-		Duel duel4 = new Duel(comp1, u1, u2, d2.parse("26/01/2022 19:30:00"), 6, 6);
-		Duel duel5 = new Duel(comp1, u1, u2, d2.parse("29/01/2022 19:30:00"), 4, 4);
-		Duel duel6 = new Duel(comp1, u1, u2, d2.parse("01/02/2022 19:30:00"), 8, 7);
-		Duel duel7 = new Duel(comp1, u1, u2, d2.parse("04/02/2022 19:30:00"), 4, 7);
-		Duel duel8 = new Duel(comp1, u1, u2, d2.parse("07/02/2022 19:30:00"), 5, 6);
-		Duel duel9 = new Duel(comp1, u1, u2, d2.parse("10/02/2022 19:30:00"), 10, 9);
-		Duel duel10 = new Duel(comp1, u1, u2, d2.parse("12/02/2022 19:30:00"), 4, 5);
-		Duel duel11 = new Duel(comp1, u1, u2, d2.parse("14/02/2022 19:30:00"), 4, 3);
-		Duel duel12 = new Duel(comp1, u1, u2, d2.parse("16/02/2022 19:30:00"), 7, 8);
+		Duel duel1 = new Duel(null, comp1, u1, u2, d2.parse("17/01/2022 19:30:00"), 10, 3);
+		Duel duel2 = new Duel(null, comp1, u1, u2, d2.parse("20/01/2022 19:30:00"), 8, 6);
+		Duel duel3 = new Duel(null, comp1, u1, u2, d2.parse("23/01/2022 19:30:00"), 1, 5);
+		Duel duel4 = new Duel(null, comp1, u1, u2, d2.parse("26/01/2022 19:30:00"), 6, 6);
+		Duel duel5 = new Duel(null, comp1, u1, u2, d2.parse("29/01/2022 19:30:00"), 4, 4);
+		Duel duel6 = new Duel(null, comp1, u1, u2, d2.parse("01/02/2022 19:30:00"), 8, 7);
+		Duel duel7 = new Duel(null, comp1, u1, u2, d2.parse("04/02/2022 19:30:00"), 4, 7);
+		Duel duel8 = new Duel(null, comp1, u1, u2, d2.parse("07/02/2022 19:30:00"), 5, 6);
+		Duel duel9 = new Duel(null, comp1, u1, u2, d2.parse("10/02/2022 19:30:00"), 10, 9);
+		Duel duel10 = new Duel(null, comp1, u1, u2, d2.parse("12/02/2022 19:30:00"), 4, 5);
+		Duel duel11 = new Duel(null, comp1, u1, u2, d2.parse("14/02/2022 19:30:00"), 4, 3);
+		Duel duel12 = new Duel(null, comp1, u1, u2, d2.parse("16/02/2022 19:30:00"), 7, 8);
 
-		Duel duel13 = new Duel(comp2, u2, u3, null, 1, 0);
-		Duel duel14 = new Duel(comp2, u4, u5, null, 0, 1);
-		Duel duel15 = new Duel(comp2, u2, u5, null, 0, 1);
-		Duel duel16 = new Duel(comp2, u3, u4, null, 1, 0);
+		Duel duel13 = new Duel(null, comp2, u2, u3, null, 1, 0);
+		Duel duel14 = new Duel(null, comp2, u4, u5, null, 0, 1);
+		Duel duel15 = new Duel(null, comp2, u2, u5, null, 0, 1);
+		Duel duel16 = new Duel(null, comp2, u3, u4, null, 1, 0);
 
-		Duel duel17 = new Duel(comp3, u1, u2, null, 150, 210);
+		Duel duel17 = new Duel(null, comp3, u1, u2, null, 150, 210);
 
-		Duel duel18 = new Duel(comp2, u5, u3, null, 0, 1);
-		Duel duel19 = new Duel(comp2, u1, u4, null, 1, 0);
-		Duel duel20 = new Duel(comp2, u3, u2, null, 0, 1);
-		Duel duel21 = new Duel(comp2, u1, u2, null, 1, 0);
-		Duel duel22 = new Duel(comp3, u3, u4, null, 0, 1);
+		Duel duel18 = new Duel(null, comp2, u5, u3, null, 0, 1);
+		Duel duel19 = new Duel(null, comp2, u1, u4, null, 1, 0);
+		Duel duel20 = new Duel(null, comp2, u3, u2, null, 0, 1);
+		Duel duel21 = new Duel(null, comp2, u1, u2, null, 1, 0);
+		Duel duel22 = new Duel(null, comp3, u3, u4, null, 0, 1);
 
 		duelRepos.save(duel1);
 		duelRepos.save(duel2);
@@ -211,6 +211,7 @@ public class CompotitionApplication implements CommandLineRunner {
 		duelRepos.save(duel7);
 		duelRepos.save(duel8);
 		duelRepos.save(duel9);
+
 		duelRepos.save(duel10);
 		duelRepos.save(duel11);
 		duelRepos.save(duel12);

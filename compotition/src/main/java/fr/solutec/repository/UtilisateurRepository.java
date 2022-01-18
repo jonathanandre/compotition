@@ -12,4 +12,6 @@ public interface UtilisateurRepository extends CrudRepository<Utilisateur, Long>
 
 	public Optional<Utilisateur> findByLogin(String login);
 
+	public void deleteByLogin(String login);
+
 }

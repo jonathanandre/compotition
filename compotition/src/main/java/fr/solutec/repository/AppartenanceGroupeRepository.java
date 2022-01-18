@@ -1,6 +1,7 @@
 package fr.solutec.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
@@ -11,5 +12,9 @@ public interface AppartenanceGroupeRepository extends CrudRepository<Appartenanc
 	public List<AppartenanceGroupe> findByUtilisateurId(Long id);
 
 	public List<AppartenanceGroupe> findByGroupeId(Long id);
+
+	public Optional<AppartenanceGroupe> findByGroupeIdAndUtilisateurLogin(Long id, String login);
+
+	public void deleteByGroupeIdAndUtilisateurLogin(Long id, String login);
 
 }
