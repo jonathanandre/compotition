@@ -1,5 +1,6 @@
 package fr.solutec.rest;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +34,10 @@ public class DuelRest {
 	@PutMapping("duel/informations/modifier")
 	public Duel setInformationsDuel(@RequestBody Duel d) {
 		return duelRepos.save(d);
+	}
+	
+	@GetMapping("duel/natif")
+	public List<Object> lesDuels(){
+		return duelRepos.retourDuel();
 	}
 }
