@@ -5,6 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,6 +26,7 @@ public class Message {
 	@ManyToOne
 	private Utilisateur envoyeur;
 	@ManyToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Amitie amitie;
 
 }
