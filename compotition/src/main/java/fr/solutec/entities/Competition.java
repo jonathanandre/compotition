@@ -31,4 +31,6 @@ public class Competition {
 	private boolean pari;
 	@ManyToOne
 	private Groupe groupe;
+	@ManyToOne
+	private Utilisateur organisateur;
 }

@@ -20,17 +20,22 @@ public class CompetitionRest {
 	@Autowired
 	private CompetitionRepository competitionRepos;
 
-	@PostMapping("competition/creercompetition")
+	@GetMapping("competition/all")
+	public Iterable<Competition> getAllCompetition() {
+		return competitionRepos.findAll();
+	}
+
+	@PostMapping("competition/creer")
 	public Competition creerCompetition(@RequestBody Competition c) {
 		return competitionRepos.save(c);
 	}
 
-	@GetMapping("competition/informationscompetition/{id}")
+	@GetMapping("competition/informations/{id}")
 	public Optional<Competition> getInformationsCompetitionById(@PathVariable Long id) {
 		return competitionRepos.findById(id);
 	}
 
-	@PutMapping("competition/informationscompetition/modifier")
+	@PutMapping("competition/informations/modifier")
 	public Competition setInformationsCompetition(@RequestBody Competition c) {
 		return competitionRepos.save(c);
 	}
