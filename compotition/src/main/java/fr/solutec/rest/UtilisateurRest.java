@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,6 +44,22 @@ public class UtilisateurRest {
 	@GetMapping("utilisateur/amitie/{login}")
 	public Optional<Utilisateur> getInformationsUtilisateurByLogin(@PathVariable String login) {
 		return utilisateurRepos.findByLogin(login);
+	}
+
+	@GetMapping("utilisateur/all")
+	public Iterable<Utilisateur> getAllUtilisateurs() {
+		return utilisateurRepos.findAll();
+	}
+
+	@DeleteMapping("utilisateur/supprimer/{login}")
+	public boolean deleteUtilisateur(@PathVariable String login) {
+		Optional<Utilisateur> u = utilisateurRepos.findByLogin(login);
+		if (u.isPresent()) {
+			// utilisateurRepos.deleteById(id)
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }
