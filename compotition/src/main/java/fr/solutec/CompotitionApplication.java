@@ -10,12 +10,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import fr.solutec.entities.Amitie;
 import fr.solutec.entities.AppartenanceGroupe;
-import fr.solutec.entities.Competition;
 import fr.solutec.entities.Conversation;
-import fr.solutec.entities.Duel;
 import fr.solutec.entities.Groupe;
 import fr.solutec.entities.Message;
-import fr.solutec.entities.Participe;
 import fr.solutec.entities.Utilisateur;
 import fr.solutec.repository.AmitieRepository;
 import fr.solutec.repository.AppartenanceGroupeRepository;
@@ -124,69 +121,6 @@ public class CompotitionApplication implements CommandLineRunner {
 		conversationRepos.save(c6);
 		conversationRepos.save(c7);
 		conversationRepos.save(c8);
-
-		Competition comp1 = new Competition(null, "Billard", d2.parse("2022-01-17 18:30:00"),
-				d2.parse("2022-02-17 18:30:00"), "Club 108, Croissy-sur-Seine", d2.parse("2022-01-17 17:30:00"),
-				"championnat", "Championnat de billard entre l'utilisateur1 et l'utilisateur2 pendant 1 mois", false,
-				g1);
-		Competition comp2 = new Competition(null, "Bière-Pong", d2.parse("2022-01-17 21:30:00"), null,
-				"Crémaillère de Gaël", d2.parse("2022-01-17 17:30:00"), "tournoi",
-				"Bière-pong facon tournoi entre 4 utilisateurs", false, g2);
-		Competition comp3 = new Competition(null, "Fléchette", d2.parse("2022-01-17 21:30:00"), null,
-				"Gite en normandie", null, "match", "Match de fléchettes entre utilisateur1 et utilisateur2", false,
-				g1);
-		Competition comp4 = new Competition(null, "Max de tucs", d2.parse("2022-01-17 21:30:00"),
-				d2.parse("2022-02-17 18:30:00"), null, d2.parse("2022-01-17 17:30:00"), "tournoi", "tournoi ouvert",
-				false, null);
-
-		competitionRepos.save(comp1);
-		competitionRepos.save(comp2);
-		competitionRepos.save(comp3);
-		competitionRepos.save(comp4);
-
-		Participe p1 = new Participe(u1, comp1);
-		Participe p2 = new Participe(u2, comp1);
-
-		Participe p3 = new Participe(u2, comp2);
-		Participe p4 = new Participe(u3, comp2);
-		Participe p5 = new Participe(u4, comp2);
-		Participe p6 = new Participe(u5, comp2);
-
-		Participe p7 = new Participe(u1, comp3);
-		Participe p8 = new Participe(u2, comp3);
-
-		Participe p9 = new Participe(u1, comp4);
-		Participe p10 = new Participe(u3, comp4);
-		Participe p11 = new Participe(u4, comp4);
-		Participe p12 = new Participe(u2, comp4);
-		Participe p13 = new Participe(u5, comp4);
-
-		participeRepos.save(p1);
-		participeRepos.save(p2);
-		participeRepos.save(p3);
-		participeRepos.save(p4);
-		participeRepos.save(p5);
-		participeRepos.save(p6);
-		participeRepos.save(p7);
-		participeRepos.save(p8);
-		participeRepos.save(p9);
-		participeRepos.save(p10);
-		participeRepos.save(p11);
-		participeRepos.save(p12);
-		participeRepos.save(p13);
-
-		Duel duel1 = new Duel(comp1, u1, u2, d2.parse("2022-01-17 19:30:00"), 10, 3);
-		Duel duel2 = new Duel(comp1, u1, u2, d2.parse("2022-01-20 19:30:00"), 8, 6);
-		Duel duel3 = new Duel(comp1, u1, u2, d2.parse("2022-01-23 19:30:00"), 1, 5);
-		Duel duel4 = new Duel(comp1, u1, u2, d2.parse("2022-01-26 19:30:00"), 6, 6);
-		Duel duel5 = new Duel(comp1, u1, u2, d2.parse("2022-01-29 19:30:00"), 4, 4);
-		Duel duel6 = new Duel(comp1, u1, u2, d2.parse("2022-01-01 19:30:00"), 8, 7);
-		Duel duel7 = new Duel(comp1, u1, u2, d2.parse("2022-01-04 19:30:00"), 4, 7);
-		Duel duel8 = new Duel(comp1, u1, u2, d2.parse("2022-01-07 19:30:00"), 5, 6);
-		Duel duel9 = new Duel(comp1, u1, u2, d2.parse("2022-01-10 19:30:00"), 10, 9);
-		Duel duel10 = new Duel(comp1, u1, u2, d2.parse("2022-01-12 19:30:00"), 4, 5);
-		Duel duel11 = new Duel(comp1, u1, u2, d2.parse("2022-01-14 19:30:00"), 4, 3);
-		Duel duel12 = new Duel(comp1, u1, u2, d2.parse("2022-01-16 19:30:00"), 7, 8);
 
 	}
 }
