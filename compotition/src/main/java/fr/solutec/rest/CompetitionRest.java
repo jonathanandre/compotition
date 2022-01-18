@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.solutec.entities.Competition;
-import fr.solutec.entities.Utilisateur;
 import fr.solutec.repository.CompetitionRepository;
 
 @RestController
