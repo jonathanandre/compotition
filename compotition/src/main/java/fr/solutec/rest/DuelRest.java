@@ -1,9 +1,11 @@
 package fr.solutec.rest;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,7 +27,7 @@ public class DuelRest {
 		return duelRepos.save(d);
 	}
 
-	@GetMapping("duel/informations/{login}")
+	@GetMapping("duel/utilisateur/informations/{login}")
 	public List<Duel> getDuelsByLogin(@PathVariable String login) {
 		return duelRepos.findByAdversaire1LoginOrAdversaire2Login(login, login);
 	}
@@ -58,6 +60,29 @@ public class DuelRest {
 	public List<Object> lesDuels() {
 		return duelRepos.retourDuel();
 
+	}
+
+	// Pas le choix de passer par le login pour avoir un duel unique en fait
+	// maintenant
+	@DeleteMapping("duel/supprimer/{id}")
+	public boolean deleteUtilisateur(@PathVariable Long id) {
+		Optional<Duel> d = duelRepos.findById(id);
+		if (d.isPresent()) {
+			duelRepos.delete(d.get());
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	@GetMapping("duel/all")
+	public Iterable<Duel> getAllDuel() {
+		return duelRepos.findAll();
+	}
+
+	@GetMapping("duel/informations/{id}")
+	public Optional<Duel> getDuelById(@PathVariable Long id) {
+		return duelRepos.findById(id);
 	}
 
 }
