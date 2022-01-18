@@ -1,5 +1,6 @@
 package fr.solutec.rest;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +39,10 @@ public class CompetitionRest {
 	@PutMapping("competition/informations/modifier")
 	public Competition setInformationsCompetition(@RequestBody Competition c) {
 		return competitionRepos.save(c);
+	}
+
+	@GetMapping("groupe/competition/informations/{id}")
+	public List<Competition> getCompetitionByGroupeId(@PathVariable Long id) {
+		return competitionRepos.findByGroupeId(id);
 	}
 }
