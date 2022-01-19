@@ -83,4 +83,10 @@ public class AppartenanceGroupeRest {
 				.findByInvitationGroupeAccepteFalseAndUtilisateurLoginAndDateInvitationReponseIsNotNull(login);
 	}
 
+	@GetMapping("groupe/classement-decroissant/{id}")
+	public List<AppartenanceGroupe> getClassementDecroissantByGoupeID(@PathVariable Long id) {
+		return appartenanceGroupeRepos
+				.findByInvitationGroupeAccepteTrueAndGroupeIdOrderByPointsParUtilisateurDansGroupeDesc(id);
+	}
+
 }

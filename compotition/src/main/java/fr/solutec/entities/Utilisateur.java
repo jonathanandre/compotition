@@ -28,6 +28,6 @@ public class Utilisateur {
 	private String email;
 	private Date dateNaissance;
 	private boolean admin;
-	private Long pointsGlobal;
-	private Long pointsPari;
+	private long pointsGlobal;
+	private long pointsPari;
 }
