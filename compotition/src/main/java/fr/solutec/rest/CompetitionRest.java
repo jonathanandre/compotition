@@ -63,4 +63,16 @@ public class CompetitionRest {
 		return competitionRepos.findByGroupeIdAndDateDebutBeforeAndDateFinIsNullOrDateDebutBeforeAndDateFinAfter(id, d,
 				d, d);
 	}
+
+	@GetMapping("groupe/competition-passees/informations/{id}")
+	public List<Competition> getCompetitionPassees(@PathVariable Long id) {
+		Date d = new Date();
+		return competitionRepos.findByGroupeIdAndDateFinBefore(id, d);
+	}
+
+	@GetMapping("groupe/competition-a-venir/informations/{id}")
+	public List<Competition> getCompetitionAVenir(@PathVariable Long id) {
+		Date d = new Date();
+		return competitionRepos.findByGroupeIdAndDateDebutAfter(id, d);
+	}
 }
