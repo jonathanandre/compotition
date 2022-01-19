@@ -12,20 +12,24 @@ import fr.solutec.entities.Amitie;
 import fr.solutec.entities.AppartenanceGroupe;
 import fr.solutec.entities.Competition;
 import fr.solutec.entities.Conversation;
+import fr.solutec.entities.CreationPari;
 import fr.solutec.entities.Duel;
 import fr.solutec.entities.Groupe;
 import fr.solutec.entities.Message;
 import fr.solutec.entities.Participe;
 import fr.solutec.entities.Utilisateur;
+import fr.solutec.entities.VotePari;
 import fr.solutec.repository.AmitieRepository;
 import fr.solutec.repository.AppartenanceGroupeRepository;
 import fr.solutec.repository.CompetitionRepository;
 import fr.solutec.repository.ConversationRepository;
+import fr.solutec.repository.CreationPariRepository;
 import fr.solutec.repository.DuelRepository;
 import fr.solutec.repository.GroupeRepository;
 import fr.solutec.repository.MessageRepository;
 import fr.solutec.repository.ParticipeRepository;
 import fr.solutec.repository.UtilisateurRepository;
+import fr.solutec.repository.VotePariRepository;
 
 @SpringBootApplication
 public class CompotitionApplication implements CommandLineRunner {
@@ -47,6 +51,10 @@ public class CompotitionApplication implements CommandLineRunner {
 	private ParticipeRepository participeRepos;
 	@Autowired
 	private DuelRepository duelRepos;
+	@Autowired
+	private CreationPariRepository creationpariRepos;
+	@Autowired
+	private VotePariRepository votepariRepos;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CompotitionApplication.class, args);
@@ -93,13 +101,24 @@ public class CompotitionApplication implements CommandLineRunner {
 		groupeRepos.save(g1);
 		groupeRepos.save(g2);
 
-		AppartenanceGroupe ag1 = new AppartenanceGroupe(u1, g1, 3);
-		AppartenanceGroupe ag2 = new AppartenanceGroupe(u2, g1, 4);
-		AppartenanceGroupe ag3 = new AppartenanceGroupe(u1, g2, 105);
-		AppartenanceGroupe ag4 = new AppartenanceGroupe(u2, g2, 610);
-		AppartenanceGroupe ag5 = new AppartenanceGroupe(u3, g2, 53);
-		AppartenanceGroupe ag6 = new AppartenanceGroupe(u4, g2, 12);
-		AppartenanceGroupe ag7 = new AppartenanceGroupe(u5, g2, 900);
+		AppartenanceGroupe ag1 = new AppartenanceGroupe(u1, g1, 3, true, d2.parse("17/01/2022 18:30:00"),
+				d2.parse("17/01/2022 18:31:00"));
+		AppartenanceGroupe ag2 = new AppartenanceGroupe(u2, g1, 4, true, d2.parse("17/01/2022 18:30:00"),
+				d2.parse("17/01/2022 18:31:00"));
+		AppartenanceGroupe ag3 = new AppartenanceGroupe(u1, g2, 105, true, d2.parse("17/01/2022 18:30:00"),
+				d2.parse("17/01/2022 18:31:00"));
+		AppartenanceGroupe ag4 = new AppartenanceGroupe(u2, g2, 610, true, d2.parse("17/01/2022 18:30:00"),
+				d2.parse("17/01/2022 18:31:00"));
+		AppartenanceGroupe ag5 = new AppartenanceGroupe(u3, g2, 53, true, d2.parse("17/01/2022 18:30:00"),
+				d2.parse("17/01/2022 18:31:00"));
+		AppartenanceGroupe ag6 = new AppartenanceGroupe(u4, g2, 12, true, d2.parse("17/01/2022 18:30:00"),
+				d2.parse("17/01/2022 18:31:00"));
+		AppartenanceGroupe ag7 = new AppartenanceGroupe(u5, g2, 900, true, d2.parse("17/01/2022 18:30:00"),
+				d2.parse("17/01/2022 18:31:00"));
+		AppartenanceGroupe ag8 = new AppartenanceGroupe(u3, g1, 0, false, d2.parse("17/01/2022 18:30:00"), null);
+		AppartenanceGroupe ag9 = new AppartenanceGroupe(u4, g2, 0, false, d2.parse("17/01/2022 18:30:00"),
+				d2.parse("17/01/2022 18:31:00"));
+
 		appartenanceGroupeRepos.save(ag1);
 		appartenanceGroupeRepos.save(ag2);
 		appartenanceGroupeRepos.save(ag3);
@@ -107,6 +126,8 @@ public class CompotitionApplication implements CommandLineRunner {
 		appartenanceGroupeRepos.save(ag5);
 		appartenanceGroupeRepos.save(ag6);
 		appartenanceGroupeRepos.save(ag7);
+		appartenanceGroupeRepos.save(ag8);
+		appartenanceGroupeRepos.save(ag9);
 
 		Conversation c1 = new Conversation(null, "On se retrouve à quelle heure", u1, g1);
 		Conversation c2 = new Conversation(null, "à 10 h", u1, g1);
@@ -130,15 +151,15 @@ public class CompotitionApplication implements CommandLineRunner {
 		Competition comp1 = new Competition(null, "Billard", d2.parse("17/01/2022 18:30:00"),
 				d2.parse("17/02/2022 18:30:00"), "Club 108, Croissy-sur-Seine", d2.parse("16/01/2022 18:30:00"),
 				"championnat", "Championnat de billard entre l'utilisateur1 et l'utilisateur2 pendant 1 mois", false,
-				g1);
+				g1, u1);
 		Competition comp2 = new Competition(null, "Bière-Pong", d2.parse("17/01/2022 18:30:00"), null,
 				"Crémaillère de Gaël", d2.parse("17/01/2022 17:30:00"), "tournoi",
-				"Bière-pong facon tournoi entre 4 utilisateurs", false, g2);
+				"Bière-pong facon tournoi entre 4 utilisateurs", false, g2, u2);
 		Competition comp3 = new Competition(null, "Fléchette", d2.parse("17/01/2022 21:30:00"), null,
-				"Gite en normandie", null, "match", "Match de fléchettes entre utilisateur1 et utilisateur2", false,
-				g1);
+				"Gite en normandie", null, "match", "Match de fléchettes entre utilisateur1 et utilisateur2", false, g1,
+				u1);
 		Competition comp4 = new Competition(null, "Max de tucs", null, null, null, null, "tournoi", "tournoi ouvert",
-				false, null);
+				false, null, u1);
 
 		competitionRepos.save(comp1);
 		competitionRepos.save(comp2);
@@ -176,31 +197,31 @@ public class CompotitionApplication implements CommandLineRunner {
 		participeRepos.save(p12);
 		participeRepos.save(p13);
 
-		Duel duel1 = new Duel(comp1, u1, u2, d2.parse("17/01/2022 19:30:00"), 10, 3);
-		Duel duel2 = new Duel(comp1, u1, u2, d2.parse("20/01/2022 19:30:00"), 8, 6);
-		Duel duel3 = new Duel(comp1, u1, u2, d2.parse("23/01/2022 19:30:00"), 1, 5);
-		Duel duel4 = new Duel(comp1, u1, u2, d2.parse("26/01/2022 19:30:00"), 6, 6);
-		Duel duel5 = new Duel(comp1, u1, u2, d2.parse("29/01/2022 19:30:00"), 4, 4);
-		Duel duel6 = new Duel(comp1, u1, u2, d2.parse("01/02/2022 19:30:00"), 8, 7);
-		Duel duel7 = new Duel(comp1, u1, u2, d2.parse("04/02/2022 19:30:00"), 4, 7);
-		Duel duel8 = new Duel(comp1, u1, u2, d2.parse("07/02/2022 19:30:00"), 5, 6);
-		Duel duel9 = new Duel(comp1, u1, u2, d2.parse("10/02/2022 19:30:00"), 10, 9);
-		Duel duel10 = new Duel(comp1, u1, u2, d2.parse("12/02/2022 19:30:00"), 4, 5);
-		Duel duel11 = new Duel(comp1, u1, u2, d2.parse("14/02/2022 19:30:00"), 4, 3);
-		Duel duel12 = new Duel(comp1, u1, u2, d2.parse("16/02/2022 19:30:00"), 7, 8);
+		Duel duel1 = new Duel(null, comp1, u1, u2, d2.parse("17/01/2022 19:30:00"), 10, 3);
+		Duel duel2 = new Duel(null, comp1, u1, u2, d2.parse("20/01/2022 19:30:00"), 8, 6);
+		Duel duel3 = new Duel(null, comp1, u1, u2, d2.parse("23/01/2022 19:30:00"), 1, 5);
+		Duel duel4 = new Duel(null, comp1, u1, u2, d2.parse("26/01/2022 19:30:00"), 6, 6);
+		Duel duel5 = new Duel(null, comp1, u1, u2, d2.parse("29/01/2022 19:30:00"), 4, 4);
+		Duel duel6 = new Duel(null, comp1, u1, u2, d2.parse("01/02/2022 19:30:00"), 8, 7);
+		Duel duel7 = new Duel(null, comp1, u1, u2, d2.parse("04/02/2022 19:30:00"), 4, 7);
+		Duel duel8 = new Duel(null, comp1, u1, u2, d2.parse("07/02/2022 19:30:00"), 5, 6);
+		Duel duel9 = new Duel(null, comp1, u1, u2, d2.parse("10/02/2022 19:30:00"), 10, 9);
+		Duel duel10 = new Duel(null, comp1, u1, u2, d2.parse("12/02/2022 19:30:00"), 4, 5);
+		Duel duel11 = new Duel(null, comp1, u1, u2, d2.parse("14/02/2022 19:30:00"), 4, 3);
+		Duel duel12 = new Duel(null, comp1, u1, u2, d2.parse("16/02/2022 19:30:00"), 7, 8);
 
-		Duel duel13 = new Duel(comp2, u2, u3, null, 1, 0);
-		Duel duel14 = new Duel(comp2, u4, u5, null, 0, 1);
-		Duel duel15 = new Duel(comp2, u2, u5, null, 0, 1);
-		Duel duel16 = new Duel(comp2, u3, u4, null, 1, 0);
+		Duel duel13 = new Duel(null, comp2, u2, u3, null, 1, 0);
+		Duel duel14 = new Duel(null, comp2, u4, u5, null, 0, 1);
+		Duel duel15 = new Duel(null, comp2, u2, u5, null, 0, 1);
+		Duel duel16 = new Duel(null, comp2, u3, u4, null, 1, 0);
 
-		Duel duel17 = new Duel(comp3, u1, u2, null, 150, 210);
+		Duel duel17 = new Duel(null, comp3, u1, u2, null, 150, 210);
 
-		Duel duel18 = new Duel(comp2, u5, u3, null, 0, 1);
-		Duel duel19 = new Duel(comp2, u1, u4, null, 1, 0);
-		Duel duel20 = new Duel(comp2, u3, u2, null, 0, 1);
-		Duel duel21 = new Duel(comp2, u1, u2, null, 1, 0);
-		Duel duel22 = new Duel(comp3, u3, u4, null, 0, 1);
+		Duel duel18 = new Duel(null, comp2, u5, u3, null, 0, 1);
+		Duel duel19 = new Duel(null, comp2, u1, u4, null, 1, 0);
+		Duel duel20 = new Duel(null, comp2, u3, u2, null, 0, 1);
+		Duel duel21 = new Duel(null, comp2, u1, u2, null, 1, 0);
+		Duel duel22 = new Duel(null, comp3, u3, u4, null, 0, 1);
 
 		duelRepos.save(duel1);
 		duelRepos.save(duel2);
@@ -211,19 +232,36 @@ public class CompotitionApplication implements CommandLineRunner {
 		duelRepos.save(duel7);
 		duelRepos.save(duel8);
 		duelRepos.save(duel9);
+
 		duelRepos.save(duel10);
 		duelRepos.save(duel11);
 		duelRepos.save(duel12);
 		duelRepos.save(duel13);
 		duelRepos.save(duel14);
 		duelRepos.save(duel15);
-		/*duelRepos.save(duel16);
+		duelRepos.save(duel16);
 		duelRepos.save(duel17);
 		duelRepos.save(duel18);
 		duelRepos.save(duel19);
 		duelRepos.save(duel20);
 		duelRepos.save(duel21);
-		duelRepos.save(duel22);*/
+		duelRepos.save(duel22);
+
+		CreationPari cp1 = new CreationPari(null, "Pari annuel", comp1);
+		CreationPari cp2 = new CreationPari(null, "Ce pari fait office de championnat du monde des parieurs", comp1);
+		CreationPari cp3 = new CreationPari(null, "....", comp2);
+
+		creationpariRepos.save(cp1);
+		creationpariRepos.save(cp2);
+		creationpariRepos.save(cp3);
+
+		VotePari vp1 = new VotePari(comp1, u1, u2, 0);
+		VotePari vp2 = new VotePari(comp1, u2, u5, 10);
+		VotePari vp3 = new VotePari(comp3, u2, u2, 20);
+
+		votepariRepos.save(vp1);
+		votepariRepos.save(vp2);
+		votepariRepos.save(vp3);
 
 	}
 }

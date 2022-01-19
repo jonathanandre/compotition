@@ -1,10 +1,8 @@
 package fr.solutec.entities;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
@@ -15,22 +13,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Duel {
-
+@IdClass(VotePariConstraint.class)
+public class VotePari {
 	@Id
-	@GeneratedValue
-	private Long id;
-
 	@ManyToOne
 	private Competition competition;
-
+	@Id
 	@ManyToOne
-	private Utilisateur adversaire1;
-
+	private Utilisateur predicteur;
 	@ManyToOne
-	private Utilisateur adversaire2;
+	private Utilisateur favori;
+	private int remuneration;
 
-	private Date date;
-	private int scoreAdversaire1;
-	private int scoreAdversaire2;
 }

@@ -1,7 +1,5 @@
 package fr.solutec.entities;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,22 +13,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Duel {
-
+public class CreationPari {
 	@Id
 	@GeneratedValue
 	private Long id;
-
+	private String description;
 	@ManyToOne
 	private Competition competition;
 
-	@ManyToOne
-	private Utilisateur adversaire1;
-
-	@ManyToOne
-	private Utilisateur adversaire2;
-
-	private Date date;
-	private int scoreAdversaire1;
-	private int scoreAdversaire2;
 }

@@ -3,17 +3,14 @@ package fr.solutec.entities;
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-public class DuelConstraint implements Serializable {
+public class VotePariConstraint implements Serializable {
 
 	@SuppressWarnings("unused")
 	private Long competition;
-
 	@SuppressWarnings("unused")
-	private Long adversaire1;
+	private Long predicteur;
 
-	@SuppressWarnings("unused")
-	private Long adversaire2;
+	public VotePariConstraint() {
 
-	public DuelConstraint() {
 	}
 }
