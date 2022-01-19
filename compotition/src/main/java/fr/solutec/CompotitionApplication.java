@@ -69,15 +69,15 @@ public class CompotitionApplication implements CommandLineRunner {
 		DateFormat d2 = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
 
 		Utilisateur u1 = new Utilisateur(null, "login", "mdp", "Nom", "Prénom", "prenom.nom@mail.com",
-				d.parse("11/11/1997"), false, null, null);
+				d.parse("11/11/1997"), false, 1, 10);
 		Utilisateur u2 = new Utilisateur(null, "login2", "mdp2", "Nom2", "Prénom2", "prenom2.nom2@mail.com",
-				d.parse("01/01/2000"), false, null, null);
+				d.parse("01/01/2000"), false, 2, 20);
 		Utilisateur u3 = new Utilisateur(null, "login3", "mdp3", "Nom3", "Prénom3", "prenom3.nom3@mail.com",
-				d.parse("11/11/1997"), false, null, null);
+				d.parse("11/11/1997"), false, 0, 50);
 		Utilisateur u4 = new Utilisateur(null, "login4", "mdp4", "Nom4", "Prénom4", "prenom4.nom4@mail.com",
-				d.parse("01/01/2000"), false, null, null);
+				d.parse("01/01/2000"), false, 4, 40);
 		Utilisateur u5 = new Utilisateur(null, "login5", "mdp5", "Nom5", "Prénom5", "prenom5.nom5@mail.com",
-				d.parse("01/01/2000"), false, null, null);
+				d.parse("01/01/2000"), false, 5, 0);
 
 		utilisateurRepos.save(u1);
 		utilisateurRepos.save(u2);
