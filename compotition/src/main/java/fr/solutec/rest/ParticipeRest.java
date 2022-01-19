@@ -1,8 +1,13 @@
 package fr.solutec.rest;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,14 +31,27 @@ public class ParticipeRest {
 		return participeRepos.save(p);
 	}
 
-//	@GetMapping("competition/participation/{id}")
-//	public Optional<Competition> getInformationsCompetitionById(@PathVariable Long id) {
-//		return competitionRepos.findById(id);
-//	}
-//
-//	@PutMapping("competition/informations/modifier")
-//	public Competition setInformationsCompetition(@RequestBody Competition c) {
-//		return competitionRepos.save(c);
-//	}
+	@GetMapping("competition/participation/{login}")
+	public List<Participe> getInformationsParticipationByLogin(@PathVariable String login) {
+		return participeRepos.findByUtilisateurLogin(login);
+	}
+
+	// FONCTIONNE PAS
+	@GetMapping("competition/{id}/participation/utilisateur/{login}")
+	public Optional<Participe> getUniqueParticiaption(@PathVariable Long id, String login) {
+		return participeRepos.findByCompetitionIdAndUtilisateurLogin(id, login);
+	}
+
+	// FONCTIONNE PAS Avec id compétition et login utilisateur
+	@DeleteMapping("competition/{id}/participation/supprimer/{login}")
+	public boolean deleteUtilisateur(@PathVariable Long id, String Login) {
+		Optional<Participe> p = participeRepos.findByCompetitionIdAndUtilisateurLogin(id, Login);
+		if (p.isPresent()) {
+			participeRepos.delete(p.get());
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 }

@@ -45,4 +45,9 @@ public class CompetitionRest {
 	public List<Competition> getCompetitionByGroupeId(@PathVariable Long id) {
 		return competitionRepos.findByGroupeId(id);
 	}
+
+	@GetMapping("utilisateur/organisateur/competition/informations/{login}")
+	public List<Competition> getCompetitionByOrganisateurLogin(@PathVariable String login) {
+		return competitionRepos.findByOrganisateurLogin(login);
+	}
 }

@@ -28,8 +28,8 @@ public class AppartenanceGroupeRest {
 	}
 
 	@GetMapping("groupes/classement/{id}")
-	public List<AppartenanceGroupe> getClassementByIdGroupe(@PathVariable Long id) {
-		return appartenanceGroupeRepos.findByGroupeId(id);
+	public List<AppartenanceGroupe> getClassementByGroupeIdAndInvitationGroupe(@PathVariable Long id) {
+		return appartenanceGroupeRepos.findByInvitationGroupeAccepteTrueAndGroupeId(id);
 
 	}
 

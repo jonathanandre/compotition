@@ -9,4 +9,6 @@ import fr.solutec.entities.Competition;
 public interface CompetitionRepository extends CrudRepository<Competition, Long> {
 
 	public List<Competition> findByGroupeId(Long id);
+
+	public List<Competition> findByOrganisateurLogin(String login);
 }

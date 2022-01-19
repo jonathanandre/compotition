@@ -11,7 +11,7 @@ public interface AppartenanceGroupeRepository extends CrudRepository<Appartenanc
 
 	public List<AppartenanceGroupe> findByUtilisateurId(Long id);
 
-	public List<AppartenanceGroupe> findByGroupeId(Long id);
+	public List<AppartenanceGroupe> findByInvitationGroupeAccepteTrueAndGroupeId(Long id);
 
 	public Optional<AppartenanceGroupe> findByGroupeIdAndUtilisateurLogin(Long id, String login);
 
