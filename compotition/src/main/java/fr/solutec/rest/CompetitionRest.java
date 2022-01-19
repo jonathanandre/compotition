@@ -52,6 +52,11 @@ public class CompetitionRest {
 		return competitionRepos.findByOrganisateurLogin(login);
 	}
 
+	@GetMapping("competition/publique/pariable")
+	public List<Competition> getCompetitionPubliquePariable() {
+		return competitionRepos.findByPariAndGroupe(true, null);
+	}
+
 	@GetMapping("groupe/competition-en-cours/informations/{id}")
 	public List<Competition> getCompetitionEnCours(@PathVariable Long id) {
 		Date d = new Date();

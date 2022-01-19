@@ -36,6 +36,11 @@ public class ParticipeRest {
 		return participeRepos.findByUtilisateurLogin(login);
 	}
 
+	@GetMapping("competition/competition/{id}")
+	public List<Participe> getParticipationByCompetition(@PathVariable Long id) {
+		return participeRepos.findByCompetitionId(id);
+	}
+
 	// Avec id compétition et login utilisateur
 	@GetMapping("competition/{id}/participation/utilisateur/{login}")
 	public Optional<Participe> getUniqueParticiaption(@PathVariable Long id, @PathVariable String login) {
