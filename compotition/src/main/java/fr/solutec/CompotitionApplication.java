@@ -101,13 +101,24 @@ public class CompotitionApplication implements CommandLineRunner {
 		groupeRepos.save(g1);
 		groupeRepos.save(g2);
 
-		AppartenanceGroupe ag1 = new AppartenanceGroupe(u1, g1, 3);
-		AppartenanceGroupe ag2 = new AppartenanceGroupe(u2, g1, 4);
-		AppartenanceGroupe ag3 = new AppartenanceGroupe(u1, g2, 105);
-		AppartenanceGroupe ag4 = new AppartenanceGroupe(u2, g2, 610);
-		AppartenanceGroupe ag5 = new AppartenanceGroupe(u3, g2, 53);
-		AppartenanceGroupe ag6 = new AppartenanceGroupe(u4, g2, 12);
-		AppartenanceGroupe ag7 = new AppartenanceGroupe(u5, g2, 900);
+		AppartenanceGroupe ag1 = new AppartenanceGroupe(u1, g1, 3, true, d2.parse("17/01/2022 18:30:00"),
+				d2.parse("17/01/2022 18:31:00"));
+		AppartenanceGroupe ag2 = new AppartenanceGroupe(u2, g1, 4, true, d2.parse("17/01/2022 18:30:00"),
+				d2.parse("17/01/2022 18:31:00"));
+		AppartenanceGroupe ag3 = new AppartenanceGroupe(u1, g2, 105, true, d2.parse("17/01/2022 18:30:00"),
+				d2.parse("17/01/2022 18:31:00"));
+		AppartenanceGroupe ag4 = new AppartenanceGroupe(u2, g2, 610, true, d2.parse("17/01/2022 18:30:00"),
+				d2.parse("17/01/2022 18:31:00"));
+		AppartenanceGroupe ag5 = new AppartenanceGroupe(u3, g2, 53, true, d2.parse("17/01/2022 18:30:00"),
+				d2.parse("17/01/2022 18:31:00"));
+		AppartenanceGroupe ag6 = new AppartenanceGroupe(u4, g2, 12, true, d2.parse("17/01/2022 18:30:00"),
+				d2.parse("17/01/2022 18:31:00"));
+		AppartenanceGroupe ag7 = new AppartenanceGroupe(u5, g2, 900, true, d2.parse("17/01/2022 18:30:00"),
+				d2.parse("17/01/2022 18:31:00"));
+		AppartenanceGroupe ag8 = new AppartenanceGroupe(u3, g1, 0, false, d2.parse("17/01/2022 18:30:00"), null);
+		AppartenanceGroupe ag9 = new AppartenanceGroupe(u4, g2, 0, false, d2.parse("17/01/2022 18:30:00"),
+				d2.parse("17/01/2022 18:31:00"));
+
 		appartenanceGroupeRepos.save(ag1);
 		appartenanceGroupeRepos.save(ag2);
 		appartenanceGroupeRepos.save(ag3);
@@ -115,6 +126,8 @@ public class CompotitionApplication implements CommandLineRunner {
 		appartenanceGroupeRepos.save(ag5);
 		appartenanceGroupeRepos.save(ag6);
 		appartenanceGroupeRepos.save(ag7);
+		appartenanceGroupeRepos.save(ag8);
+		appartenanceGroupeRepos.save(ag9);
 
 		Conversation c1 = new Conversation(null, "On se retrouve à quelle heure", u1, g1);
 		Conversation c2 = new Conversation(null, "à 10 h", u1, g1);
@@ -138,15 +151,15 @@ public class CompotitionApplication implements CommandLineRunner {
 		Competition comp1 = new Competition(null, "Billard", d2.parse("17/01/2022 18:30:00"),
 				d2.parse("17/02/2022 18:30:00"), "Club 108, Croissy-sur-Seine", d2.parse("16/01/2022 18:30:00"),
 				"championnat", "Championnat de billard entre l'utilisateur1 et l'utilisateur2 pendant 1 mois", false,
-				g1);
+				g1, u1);
 		Competition comp2 = new Competition(null, "Bière-Pong", d2.parse("17/01/2022 18:30:00"), null,
 				"Crémaillère de Gaël", d2.parse("17/01/2022 17:30:00"), "tournoi",
-				"Bière-pong facon tournoi entre 4 utilisateurs", false, g2);
+				"Bière-pong facon tournoi entre 4 utilisateurs", false, g2, u2);
 		Competition comp3 = new Competition(null, "Fléchette", d2.parse("17/01/2022 21:30:00"), null,
-				"Gite en normandie", null, "match", "Match de fléchettes entre utilisateur1 et utilisateur2", false,
-				g1);
+				"Gite en normandie", null, "match", "Match de fléchettes entre utilisateur1 et utilisateur2", false, g1,
+				u1);
 		Competition comp4 = new Competition(null, "Max de tucs", null, null, null, null, "tournoi", "tournoi ouvert",
-				false, null);
+				false, null, u1);
 
 		competitionRepos.save(comp1);
 		competitionRepos.save(comp2);
