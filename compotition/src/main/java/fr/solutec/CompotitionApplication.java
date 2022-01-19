@@ -12,20 +12,24 @@ import fr.solutec.entities.Amitie;
 import fr.solutec.entities.AppartenanceGroupe;
 import fr.solutec.entities.Competition;
 import fr.solutec.entities.Conversation;
+import fr.solutec.entities.CreationPari;
 import fr.solutec.entities.Duel;
 import fr.solutec.entities.Groupe;
 import fr.solutec.entities.Message;
 import fr.solutec.entities.Participe;
 import fr.solutec.entities.Utilisateur;
+import fr.solutec.entities.VotePari;
 import fr.solutec.repository.AmitieRepository;
 import fr.solutec.repository.AppartenanceGroupeRepository;
 import fr.solutec.repository.CompetitionRepository;
 import fr.solutec.repository.ConversationRepository;
+import fr.solutec.repository.CreationPariRepository;
 import fr.solutec.repository.DuelRepository;
 import fr.solutec.repository.GroupeRepository;
 import fr.solutec.repository.MessageRepository;
 import fr.solutec.repository.ParticipeRepository;
 import fr.solutec.repository.UtilisateurRepository;
+import fr.solutec.repository.VotePariRepository;
 
 @SpringBootApplication
 public class CompotitionApplication implements CommandLineRunner {
@@ -47,6 +51,10 @@ public class CompotitionApplication implements CommandLineRunner {
 	private ParticipeRepository participeRepos;
 	@Autowired
 	private DuelRepository duelRepos;
+	@Autowired
+	private CreationPariRepository creationpariRepos;
+	@Autowired
+	private VotePariRepository votepariRepos;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CompotitionApplication.class, args);
@@ -225,6 +233,22 @@ public class CompotitionApplication implements CommandLineRunner {
 		duelRepos.save(duel20);
 		duelRepos.save(duel21);
 		duelRepos.save(duel22);
+
+		CreationPari cp1 = new CreationPari(null, "Pari annuel", comp1);
+		CreationPari cp2 = new CreationPari(null, "Ce pari fait office de championnat du monde des parieurs", comp1);
+		CreationPari cp3 = new CreationPari(null, "....", comp2);
+
+		creationpariRepos.save(cp1);
+		creationpariRepos.save(cp2);
+		creationpariRepos.save(cp3);
+
+		VotePari vp1 = new VotePari(comp1, u1, u2, 0);
+		VotePari vp2 = new VotePari(comp1, u2, u5, 10);
+		VotePari vp3 = new VotePari(comp3, u2, u2, 20);
+
+		votepariRepos.save(vp1);
+		votepariRepos.save(vp2);
+		votepariRepos.save(vp3);
 
 	}
 }
