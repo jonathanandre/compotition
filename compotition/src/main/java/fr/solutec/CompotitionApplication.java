@@ -167,6 +167,10 @@ public class CompotitionApplication implements CommandLineRunner {
 		Competition comp7 = new Competition(null, "tournoi régional de fusées artisanales",
 				d2.parse("10/02/2022 18:30:00"), d2.parse("17/02/2022 18:30:00"), "La Lune", null, "match", null, true,
 				null, u1);
+		Competition comp8 = new Competition(null, "tournoi régional de compotes", d2.parse("10/02/2022 18:30:00"),
+				d2.parse("17/02/2022 18:30:00"), "Brest", null, "match", null, true, null, u1);
+		Competition comp9 = new Competition(null, "Hunger Games", d2.parse("10/02/2022 18:30:00"),
+				d2.parse("17/02/2022 18:30:00"), "Capitole", null, "match", null, true, null, u1);
 
 		competitionRepos.save(comp1);
 		competitionRepos.save(comp2);
@@ -175,6 +179,8 @@ public class CompotitionApplication implements CommandLineRunner {
 		competitionRepos.save(comp5);
 		competitionRepos.save(comp6);
 		competitionRepos.save(comp7);
+		competitionRepos.save(comp8);
+		competitionRepos.save(comp9);
 
 		Participe p1 = new Participe(u1, comp1);
 		Participe p2 = new Participe(u2, comp1);
@@ -202,6 +208,12 @@ public class CompotitionApplication implements CommandLineRunner {
 		Participe p18 = new Participe(u1, comp7);
 		Participe p19 = new Participe(u2, comp7);
 
+		Participe p20 = new Participe(u5, comp8);
+		Participe p21 = new Participe(u2, comp8);
+
+		Participe p22 = new Participe(u3, comp9);
+		Participe p23 = new Participe(u2, comp9);
+
 		participeRepos.save(p1);
 		participeRepos.save(p2);
 		participeRepos.save(p3);
@@ -221,6 +233,10 @@ public class CompotitionApplication implements CommandLineRunner {
 		participeRepos.save(p17);
 		participeRepos.save(p18);
 		participeRepos.save(p19);
+		participeRepos.save(p20);
+		participeRepos.save(p21);
+		participeRepos.save(p22);
+		participeRepos.save(p23);
 
 		Duel duel1 = new Duel(null, comp1, u1, u2, d2.parse("17/01/2022 19:30:00"), 10, 3);
 		Duel duel2 = new Duel(null, comp1, u1, u2, d2.parse("20/01/2022 19:30:00"), 8, 6);
