@@ -13,5 +13,6 @@ public interface CompetitionRepository extends CrudRepository<Competition, Long>
 
 	public List<Competition> findByOrganisateurLogin(String login);
 
-	public List<Competition> findByGroupeIdAndDateDebutBeforeAndDateFinIsNullOrDateFinAfter(Long id, Date d, Date d2);
+	public List<Competition> findByGroupeIdAndDateDebutBeforeAndDateFinIsNullOrDateDebutBeforeAndDateFinAfter(Long id,
+			Date d, Date d2, Date d3);
 }

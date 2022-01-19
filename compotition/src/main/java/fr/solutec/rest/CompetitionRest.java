@@ -55,6 +55,7 @@ public class CompetitionRest {
 	@GetMapping("groupe/competition-en-cours/informations/{id}")
 	public List<Competition> getCompetitionEnCours(@PathVariable Long id) {
 		Date d = new Date();
-		return competitionRepos.findByGroupeIdAndDateDebutBeforeAndDateFinIsNullOrDateFinAfter(id, d, d);
+		return competitionRepos.findByGroupeIdAndDateDebutBeforeAndDateFinIsNullOrDateDebutBeforeAndDateFinAfter(id, d,
+				d, d);
 	}
 }
