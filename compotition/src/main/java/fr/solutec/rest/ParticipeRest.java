@@ -49,7 +49,7 @@ public class ParticipeRest {
 
 	// Avec id compétition et login utilisateur
 	@DeleteMapping("competition/{id}/participation/supprimer/{login}")
-	public boolean deleteUtilisateur(@PathVariable Long id, @PathVariable String login) {
+	public boolean deleteParticipation(@PathVariable Long id, @PathVariable String login) {
 		Optional<Participe> p = participeRepos.findByCompetitionIdAndUtilisateurLogin(id, login);
 		if (p.isPresent()) {
 			participeRepos.delete(p.get());
