@@ -1,5 +1,6 @@
 package fr.solutec.rest;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,5 +50,11 @@ public class CompetitionRest {
 	@GetMapping("utilisateur/organisateur/competition/informations/{login}")
 	public List<Competition> getCompetitionByOrganisateurLogin(@PathVariable String login) {
 		return competitionRepos.findByOrganisateurLogin(login);
+	}
+
+	@GetMapping("groupe/competition-en-cours/informations/{id}")
+	public List<Competition> getCompetitionEnCours(@PathVariable Long id) {
+		Date d = new Date();
+		return competitionRepos.findByGroupeIdAndDateDebutBeforeAndDateFinIsNullOrDateFinAfter(id, d, d);
 	}
 }

@@ -38,14 +38,14 @@ public class ParticipeRest {
 
 	// FONCTIONNE PAS
 	@GetMapping("competition/{id}/participation/utilisateur/{login}")
-	public Optional<Participe> getUniqueParticiaption(@PathVariable Long id, String login) {
+	public Optional<Participe> getUniqueParticiaption(@PathVariable Long id, @PathVariable String login) {
 		return participeRepos.findByCompetitionIdAndUtilisateurLogin(id, login);
 	}
 
 	// FONCTIONNE PAS Avec id compétition et login utilisateur
 	@DeleteMapping("competition/{id}/participation/supprimer/{login}")
-	public boolean deleteUtilisateur(@PathVariable Long id, String Login) {
-		Optional<Participe> p = participeRepos.findByCompetitionIdAndUtilisateurLogin(id, Login);
+	public boolean deleteUtilisateur(@PathVariable Long id, @PathVariable String login) {
+		Optional<Participe> p = participeRepos.findByCompetitionIdAndUtilisateurLogin(id, login);
 		if (p.isPresent()) {
 			participeRepos.delete(p.get());
 			return true;
