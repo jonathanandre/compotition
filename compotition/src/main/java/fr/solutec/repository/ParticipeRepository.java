@@ -13,4 +13,6 @@ public interface ParticipeRepository extends CrudRepository<Participe, Long> {
 
 	public Optional<Participe> findByCompetitionIdAndUtilisateurLogin(Long id, String login);
 
+	public List<Participe> findByCompetitionId(Long id);
+
 }

@@ -54,4 +54,9 @@ public class ParticipeRest {
 		}
 	}
 
+	// Tous les participants d'une compétition
+	@GetMapping("competition/{id}/participants")
+	public List<Participe> getParticipantsCompetition(@PathVariable Long id) {
+		return participeRepos.findByCompetitionId(id);
+	}
 }
