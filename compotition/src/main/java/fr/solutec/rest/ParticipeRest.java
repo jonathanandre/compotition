@@ -59,4 +59,16 @@ public class ParticipeRest {
 	public List<Participe> getParticipantsCompetition(@PathVariable Long id) {
 		return participeRepos.findByCompetitionId(id);
 	}
+
+	// Avec id compétition et login utilisateur
+	@GetMapping("competition/{id}/participation/utilisateur/boolean/{login}")
+	public boolean getBooleanUniqueParticiaption(@PathVariable Long id, @PathVariable String login) {
+		Optional<Participe> p = participeRepos.findByCompetitionIdAndUtilisateurLogin(id, login);
+		if (p.isPresent()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }
