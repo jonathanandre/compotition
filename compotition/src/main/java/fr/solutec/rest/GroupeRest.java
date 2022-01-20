@@ -36,6 +36,9 @@ public class GroupeRest {
 		return groupeRepos.findAll();
 	}
 
+	// Attention, dû aux dépendances avec appartencance groupe, pari etc, il n'est
+	// possible de supprimer des groupes que si il n'est pas lié à d'autres entités
+	// à part d'autres utilisateurs
 	@DeleteMapping("groupes/supprimer/{id}")
 	public boolean supprimerGroupe(@PathVariable Long id) {
 		Optional<Groupe> g = groupeRepos.findById(id);

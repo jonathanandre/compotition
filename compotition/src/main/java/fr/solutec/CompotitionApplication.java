@@ -17,6 +17,8 @@ import fr.solutec.entities.Duel;
 import fr.solutec.entities.Groupe;
 import fr.solutec.entities.Message;
 import fr.solutec.entities.Participe;
+import fr.solutec.entities.Succes;
+import fr.solutec.entities.SuccesUtilisateur;
 import fr.solutec.entities.Utilisateur;
 import fr.solutec.entities.VotePari;
 import fr.solutec.repository.AmitieRepository;
@@ -28,6 +30,8 @@ import fr.solutec.repository.DuelRepository;
 import fr.solutec.repository.GroupeRepository;
 import fr.solutec.repository.MessageRepository;
 import fr.solutec.repository.ParticipeRepository;
+import fr.solutec.repository.SuccesRepository;
+import fr.solutec.repository.SuccesUtilisateurRepository;
 import fr.solutec.repository.UtilisateurRepository;
 import fr.solutec.repository.VotePariRepository;
 
@@ -55,6 +59,10 @@ public class CompotitionApplication implements CommandLineRunner {
 	private CreationPariRepository creationpariRepos;
 	@Autowired
 	private VotePariRepository votepariRepos;
+	@Autowired
+	private SuccesRepository succesRepos;
+	@Autowired
+	private SuccesUtilisateurRepository succesUtilisateurRepos;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CompotitionApplication.class, args);
@@ -303,6 +311,25 @@ public class CompotitionApplication implements CommandLineRunner {
 		votepariRepos.save(vp1);
 		votepariRepos.save(vp2);
 		votepariRepos.save(vp3);
+
+		Succes s1 = new Succes(null, "Créer un groupe", "Créer une compétition", "Gagner un match",
+				"Gagner une compétition", "Gagner 5 matchs", "Gagner un pari", null, null, null, null);
+		Succes s2 = new Succes(null, null, null, null, null, null, null, "Numéro 1 au classement général", null, null,
+				null);
+		Succes s3 = new Succes(null, null, null, null, null, null, null, null, "Numéro 1 à un événement pari", null,
+				null);
+
+		succesRepos.save(s1);
+		succesRepos.save(s2);
+		succesRepos.save(s3);
+
+		SuccesUtilisateur su1 = new SuccesUtilisateur(null, s1, u1);
+		SuccesUtilisateur su2 = new SuccesUtilisateur(null, s2, u5);
+		SuccesUtilisateur su3 = new SuccesUtilisateur(null, s3, u3);
+
+		succesUtilisateurRepos.save(su1);
+		succesUtilisateurRepos.save(su2);
+		succesUtilisateurRepos.save(su3);
 
 	}
 }
