@@ -21,5 +21,10 @@ public interface DuelRepository extends CrudRepository<Duel, Long> {
 			+ "    duel d\r\n" + "        INNER JOIN\r\n" + "    utilisateur a1 ON a1.id = d.adversaire2_id\r\n"
 			+ "        INNER JOIN\r\n" + "    utilisateur a2 ON a2.id = d.adversaire1_id;", nativeQuery = true)
 	public List<Object> retourDuel();
+	
+	@Query(value = "SELECT \r\n" + " score_adversaire1, score_adversaire2\r\n" + "FROM\r\n"
+			+ "    duel d\r\n" + "        INNER JOIN\r\n" + "    utilisateur a1 ON a1.id = d.adversaire2_id\r\n"
+			+ "        INNER JOIN\r\n" + "    utilisateur a2 ON a2.id = d.adversaire1_id;", nativeQuery = true)
+	public List<Object> retourDuelScore();
 
 }
