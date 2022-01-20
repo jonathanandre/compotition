@@ -169,7 +169,7 @@ public class CompotitionApplication implements CommandLineRunner {
 				null, u1);
 		Competition comp8 = new Competition(null, "tournoi régional de compotes", d2.parse("10/02/2022 18:30:00"),
 				d2.parse("17/02/2022 18:30:00"), "Brest", null, "match", null, true, null, u1);
-		Competition comp9 = new Competition(null, "Hunger Games", d2.parse("10/02/2022 18:30:00"),
+		Competition comp9 = new Competition(null, "Hunger Games", d2.parse("17/01/2022 18:30:00"),
 				d2.parse("17/02/2022 18:30:00"), "Capitole", null, "match", null, true, null, u1);
 
 		competitionRepos.save(comp1);
