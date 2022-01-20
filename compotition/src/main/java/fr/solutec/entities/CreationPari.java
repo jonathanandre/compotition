@@ -5,6 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,6 +24,7 @@ public class CreationPari { // cette classe aurait pu fusionner avec competition
 	private Long id;
 	private String description;
 	@ManyToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Competition competition;
 
 }

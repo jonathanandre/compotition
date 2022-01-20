@@ -77,8 +77,10 @@ public class CompetitionRest {
 		return competitionRepos.findByGroupeIdAndDateDebutAfter(id, d);
 	}
 
-	// NE PAS UTILISER - DEPENDANTE D'AUTRE CONTRAINTES QUI EMPECHE LA SUPPRESSION -
-	// VOIR PLUS TARD
+	// ATTENTION : pour utiliser cette requete il faut au préalable avoir supprimer
+	// tous les duels et participation relatifs a cette compétition
+	// Je suis en train de me pencher sur le sujet pour voir si je peux déclancher
+	// toutes les suppressions depuis le back
 	@DeleteMapping("competition/supprimer/{id}")
 	public boolean deleteCompetition(@PathVariable Long id) {
 		Optional<Competition> c = competitionRepos.findById(id);
