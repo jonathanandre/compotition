@@ -304,7 +304,7 @@ public class CompotitionApplication implements CommandLineRunner {
 		creationpariRepos.save(cp2);
 		creationpariRepos.save(cp3);
 
-		VotePari vp1 = new VotePari(comp1, u1, u2, 0);
+		VotePari vp1 = new VotePari(comp1, u1, u1, 0);
 		VotePari vp2 = new VotePari(comp1, u2, u5, 10);
 		VotePari vp3 = new VotePari(comp3, u2, u2, 20);
 
