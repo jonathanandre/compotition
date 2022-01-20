@@ -26,4 +26,7 @@ public interface AppartenanceGroupeRepository extends CrudRepository<Appartenanc
 	public List<AppartenanceGroupe> findByInvitationGroupeAccepteTrueAndGroupeIdOrderByPointsParUtilisateurDansGroupeDesc(
 			Long id);
 
+	public List<AppartenanceGroupe> findByInvitationGroupeAccepteFalseAndGroupeIdAndDateInvitationReponseIsNull(
+			Long id);
+
 }

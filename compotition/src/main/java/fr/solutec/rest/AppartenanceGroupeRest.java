@@ -89,4 +89,9 @@ public class AppartenanceGroupeRest {
 				.findByInvitationGroupeAccepteTrueAndGroupeIdOrderByPointsParUtilisateurDansGroupeDesc(id);
 	}
 
+	@GetMapping("groupe/{id}/inviatations-en-cours")
+	public List<AppartenanceGroupe> getInvitationUtilisateursDansGroupeEnCours(@PathVariable Long id) {
+		return appartenanceGroupeRepos.findByInvitationGroupeAccepteFalseAndGroupeIdAndDateInvitationReponseIsNull(id);
+	}
+
 }
