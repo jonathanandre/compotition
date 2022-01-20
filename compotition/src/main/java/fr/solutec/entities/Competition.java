@@ -33,4 +33,6 @@ public class Competition {
 	private Groupe groupe;
 	@ManyToOne
 	private Utilisateur organisateur;
+	@ManyToOne
+	private Utilisateur vainqueur;
 }
