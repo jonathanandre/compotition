@@ -13,8 +13,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class CreationPari {
-	@Id
+public class CreationPari { // cette classe aurait pu fusionner avec competition (1 attribut descriptionpari
+							// dans competition)
+	@Id // il n'y a pas de contrainte mais il ne doit pas y avoir 2 creation de pari
+		// pour une même compétition
 	@GeneratedValue
 	private Long id;
 	private String description;

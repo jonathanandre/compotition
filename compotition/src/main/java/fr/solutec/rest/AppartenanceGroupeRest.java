@@ -22,14 +22,14 @@ public class AppartenanceGroupeRest {
 	@Autowired
 	private AppartenanceGroupeRepository appartenanceGroupeRepos;
 
-	@GetMapping("groupes/mes-groupes/{id}")
-	public List<AppartenanceGroupe> getGroupesByIdUtilisateur(@PathVariable Long id) {
-		return appartenanceGroupeRepos.findByUtilisateurId(id);
+	@GetMapping("groupes/mes-groupes/{login}")
+	public List<AppartenanceGroupe> getGroupesByIdUtilisateur(@PathVariable String login) {
+		return appartenanceGroupeRepos.findByInvitationGroupeAccepteTrueAndUtilisateurLogin(login);
 	}
 
 	@GetMapping("groupes/classement/{id}")
-	public List<AppartenanceGroupe> getClassementByIdGroupe(@PathVariable Long id) {
-		return appartenanceGroupeRepos.findByGroupeId(id);
+	public List<AppartenanceGroupe> getClassementByGroupeIdAndInvitationGroupe(@PathVariable Long id) {
+		return appartenanceGroupeRepos.findByInvitationGroupeAccepteTrueAndGroupeId(id);
 
 	}
 
@@ -70,4 +70,23 @@ public class AppartenanceGroupeRest {
 	public Iterable<AppartenanceGroupe> getAllAppartenanceGroupe() {
 		return appartenanceGroupeRepos.findAll();
 	}
+
+	@GetMapping("utilisateur/groupe/inviatations-en-cours/{login}")
+	public List<AppartenanceGroupe> getInvitationGroupeEnCours(@PathVariable String login) {
+		return appartenanceGroupeRepos
+				.findByInvitationGroupeAccepteFalseAndUtilisateurLoginAndDateInvitationReponseIsNull(login);
+	}
+
+	@GetMapping("utilisateur/groupe/inviatations-refuse/{login}")
+	public List<AppartenanceGroupe> getInvitationRefuse(@PathVariable String login) {
+		return appartenanceGroupeRepos
+				.findByInvitationGroupeAccepteFalseAndUtilisateurLoginAndDateInvitationReponseIsNotNull(login);
+	}
+
+	@GetMapping("groupe/classement-decroissant/{id}")
+	public List<AppartenanceGroupe> getClassementDecroissantByGoupeID(@PathVariable Long id) {
+		return appartenanceGroupeRepos
+				.findByInvitationGroupeAccepteTrueAndGroupeIdOrderByPointsParUtilisateurDansGroupeDesc(id);
+	}
+
 }

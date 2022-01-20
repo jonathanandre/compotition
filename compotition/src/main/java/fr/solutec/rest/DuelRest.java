@@ -70,7 +70,7 @@ public class DuelRest {
 	// Pas le choix de passer par le login pour avoir un duel unique en fait
 	// maintenant
 	@DeleteMapping("duel/supprimer/{id}")
-	public boolean deleteUtilisateur(@PathVariable Long id) {
+	public boolean deleteDuel(@PathVariable Long id) {
 		Optional<Duel> d = duelRepos.findById(id);
 		if (d.isPresent()) {
 			duelRepos.delete(d.get());

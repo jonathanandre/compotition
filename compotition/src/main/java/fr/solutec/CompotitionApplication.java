@@ -69,15 +69,15 @@ public class CompotitionApplication implements CommandLineRunner {
 		DateFormat d2 = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
 
 		Utilisateur u1 = new Utilisateur(null, "login", "mdp", "Nom", "Prénom", "prenom.nom@mail.com",
-				d.parse("11/11/1997"), false, null, null);
+				d.parse("11/11/1997"), false, 1, 10);
 		Utilisateur u2 = new Utilisateur(null, "login2", "mdp2", "Nom2", "Prénom2", "prenom2.nom2@mail.com",
-				d.parse("01/01/2000"), false, null, null);
+				d.parse("01/01/2000"), false, 2, 20);
 		Utilisateur u3 = new Utilisateur(null, "login3", "mdp3", "Nom3", "Prénom3", "prenom3.nom3@mail.com",
-				d.parse("11/11/1997"), false, null, null);
+				d.parse("11/11/1997"), false, 0, 50);
 		Utilisateur u4 = new Utilisateur(null, "login4", "mdp4", "Nom4", "Prénom4", "prenom4.nom4@mail.com",
-				d.parse("01/01/2000"), false, null, null);
+				d.parse("01/01/2000"), false, 4, 40);
 		Utilisateur u5 = new Utilisateur(null, "login5", "mdp5", "Nom5", "Prénom5", "prenom5.nom5@mail.com",
-				d.parse("01/01/2000"), false, null, null);
+				d.parse("01/01/2000"), false, 5, 0);
 
 		utilisateurRepos.save(u1);
 		utilisateurRepos.save(u2);
@@ -152,19 +152,35 @@ public class CompotitionApplication implements CommandLineRunner {
 				d2.parse("17/02/2022 18:30:00"), "Club 108, Croissy-sur-Seine", d2.parse("16/01/2022 18:30:00"),
 				"championnat", "Championnat de billard entre l'utilisateur1 et l'utilisateur2 pendant 1 mois", false,
 				g1, u1);
-		Competition comp2 = new Competition(null, "Bière-Pong", d2.parse("17/01/2022 18:30:00"), null,
-				"Crémaillère de Gaël", d2.parse("17/01/2022 17:30:00"), "tournoi",
+		Competition comp2 = new Competition(null, "Bière-Pong", d2.parse("17/01/2022 18:30:00"),
+				d2.parse("17/01/2022 22:30:00"), "Crémaillère de Gaël", d2.parse("17/01/2022 17:30:00"), "tournoi",
 				"Bière-pong facon tournoi entre 4 utilisateurs", false, g2, u2);
 		Competition comp3 = new Competition(null, "Fléchette", d2.parse("17/01/2022 21:30:00"), null,
 				"Gite en normandie", null, "match", "Match de fléchettes entre utilisateur1 et utilisateur2", false, g1,
 				u1);
-		Competition comp4 = new Competition(null, "Max de tucs", null, null, null, null, "tournoi", "tournoi ouvert",
-				false, null, u1);
+		Competition comp4 = new Competition(null, "Max de tucs", d2.parse("17/01/2022 17:30:00"), null, null,
+				d2.parse("17/01/2022 18:30:00"), "tournoi", "tournoi ouvert", false, null, u1);
+		Competition comp5 = new Competition(null, "Test", d2.parse("10/02/2022 18:30:00"),
+				d2.parse("17/02/2022 18:30:00"), null, null, "match", null, false, g1, u1);
+		Competition comp6 = new Competition(null, "Testing", d2.parse("10/02/2022 18:30:00"),
+				d2.parse("17/02/2022 18:30:00"), "Voisins-le-Bretonneux", null, "match", null, true, null, u1);
+		Competition comp7 = new Competition(null, "tournoi régional de fusées artisanales",
+				d2.parse("10/02/2022 18:30:00"), d2.parse("17/02/2022 18:30:00"), "La Lune", null, "match", null, true,
+				null, u1);
+		Competition comp8 = new Competition(null, "tournoi régional de compotes", d2.parse("10/02/2022 18:30:00"),
+				d2.parse("17/02/2022 18:30:00"), "Brest", null, "match", null, true, null, u1);
+		Competition comp9 = new Competition(null, "Hunger Games", d2.parse("10/02/2022 18:30:00"),
+				d2.parse("17/02/2022 18:30:00"), "Capitole", null, "match", null, true, null, u1);
 
 		competitionRepos.save(comp1);
 		competitionRepos.save(comp2);
 		competitionRepos.save(comp3);
 		competitionRepos.save(comp4);
+		competitionRepos.save(comp5);
+		competitionRepos.save(comp6);
+		competitionRepos.save(comp7);
+		competitionRepos.save(comp8);
+		competitionRepos.save(comp9);
 
 		Participe p1 = new Participe(u1, comp1);
 		Participe p2 = new Participe(u2, comp1);
@@ -183,6 +199,21 @@ public class CompotitionApplication implements CommandLineRunner {
 		Participe p12 = new Participe(u2, comp4);
 		Participe p13 = new Participe(u5, comp4);
 
+		Participe p14 = new Participe(u1, comp5);
+		Participe p15 = new Participe(u2, comp5);
+
+		Participe p16 = new Participe(u1, comp6);
+		Participe p17 = new Participe(u2, comp6);
+
+		Participe p18 = new Participe(u1, comp7);
+		Participe p19 = new Participe(u2, comp7);
+
+		Participe p20 = new Participe(u5, comp8);
+		Participe p21 = new Participe(u2, comp8);
+
+		Participe p22 = new Participe(u3, comp9);
+		Participe p23 = new Participe(u2, comp9);
+
 		participeRepos.save(p1);
 		participeRepos.save(p2);
 		participeRepos.save(p3);
@@ -196,6 +227,16 @@ public class CompotitionApplication implements CommandLineRunner {
 		participeRepos.save(p11);
 		participeRepos.save(p12);
 		participeRepos.save(p13);
+		participeRepos.save(p14);
+		participeRepos.save(p15);
+		participeRepos.save(p16);
+		participeRepos.save(p17);
+		participeRepos.save(p18);
+		participeRepos.save(p19);
+		participeRepos.save(p20);
+		participeRepos.save(p21);
+		participeRepos.save(p22);
+		participeRepos.save(p23);
 
 		Duel duel1 = new Duel(null, comp1, u1, u2, d2.parse("17/01/2022 19:30:00"), 10, 3);
 		Duel duel2 = new Duel(null, comp1, u1, u2, d2.parse("20/01/2022 19:30:00"), 8, 6);

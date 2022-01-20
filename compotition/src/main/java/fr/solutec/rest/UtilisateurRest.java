@@ -1,5 +1,6 @@
 package fr.solutec.rest;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,16 @@ public class UtilisateurRest {
 		} else {
 			return false;
 		}
+	}
+
+	@GetMapping("utilisateur/classement-global")
+	public List<Utilisateur> getAllUtilisateursClassementGlobal() {
+		return utilisateurRepos.findAllByOrderByPointsGlobalDesc();
+	}
+
+	@GetMapping("utilisateur/classement-pari")
+	public List<Utilisateur> getAllUtilisateursClassementPari() {
+		return utilisateurRepos.findAllByOrderByPointsPariDesc();
 	}
 
 }
