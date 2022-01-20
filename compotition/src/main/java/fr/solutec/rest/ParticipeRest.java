@@ -1,5 +1,6 @@
 package fr.solutec.rest;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -74,6 +75,26 @@ public class ParticipeRest {
 		} else {
 			return false;
 		}
+	}
+
+	@GetMapping("utilisateur/competition-passees/informations/{login}")
+	public List<Participe> getUtilisateurCompetitionPassees(@PathVariable String login) {
+		Date d = new Date();
+		return participeRepos.findByUtilisateurLoginAndCompetitionDateFinBefore(login, d);
+	}
+
+	@GetMapping("utilisateur/competition-en-cours/informations/{login}")
+	public List<Participe> getUtilisateurCompetitionEnCours(@PathVariable String login) {
+		Date d = new Date();
+		return participeRepos
+				.findByUtilisateurLoginAndCompetitionDateDebutBeforeAndCompetitionDateFinIsNullOrCompetitionDateDebutBeforeAndCompetitionDateFinAfter(
+						login, d, d, d);
+	}
+
+	@GetMapping("utilisateur/competition-a-venir/informations/{login}")
+	public List<Participe> getUtilisateurCompetitionAVenir(@PathVariable String login) {
+		Date d = new Date();
+		return participeRepos.findByUtilisateurLoginAndCompetitionDateDebutAfter(login, d);
 	}
 
 }

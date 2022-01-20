@@ -56,9 +56,14 @@ public class DuelRest {
 		return duelRepos.findByCompetitionIdAndAdversaire1LoginOrAdversaire2Login(id, login, login2);
 	}
 
-	@GetMapping("duel/natif")
+	@GetMapping("duel/natif/adversaire")
 	public List<Object> lesDuels() {
 		return duelRepos.retourDuel();
+
+	}
+	@GetMapping("duel/natif/score")
+	public List<Object> lesDuelsScore() {
+		return duelRepos.retourDuelScore();
 
 	}
 

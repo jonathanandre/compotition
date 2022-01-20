@@ -1,5 +1,6 @@
 package fr.solutec.repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,5 +15,12 @@ public interface ParticipeRepository extends CrudRepository<Participe, Long> {
 	public Optional<Participe> findByCompetitionIdAndUtilisateurLogin(Long id, String login);
 
 	public List<Participe> findByCompetitionId(Long id);
+
+	public List<Participe> findByUtilisateurLoginAndCompetitionDateDebutBeforeAndCompetitionDateFinIsNullOrCompetitionDateDebutBeforeAndCompetitionDateFinAfter(
+			String login, Date d, Date d2, Date d3);
+
+	public List<Participe> findByUtilisateurLoginAndCompetitionDateFinBefore(String login, Date d);
+
+	public List<Participe> findByUtilisateurLoginAndCompetitionDateDebutAfter(String login, Date d);
 
 }
