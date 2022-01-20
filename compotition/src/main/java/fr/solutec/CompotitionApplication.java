@@ -312,24 +312,48 @@ public class CompotitionApplication implements CommandLineRunner {
 		votepariRepos.save(vp2);
 		votepariRepos.save(vp3);
 
-		Succes s1 = new Succes(null, "Créer un groupe", "Créer une compétition", "Gagner un match",
-				"Gagner une compétition", "Gagner 5 matchs", "Gagner un pari", null, null, null, null);
-		Succes s2 = new Succes(null, null, null, null, null, null, null, "Numéro 1 au classement général", null, null,
-				null);
-		Succes s3 = new Succes(null, null, null, null, null, null, null, null, "Numéro 1 à un événement pari", null,
-				null);
+		Succes s1 = new Succes(null, "Numéro 1 à un événement pari");
+		Succes s2 = new Succes(null, "Créer une compétition");
+		Succes s3 = new Succes(null, "Gagner un match");
+		Succes s4 = new Succes(null, "Gagner une compétition");
+		Succes s5 = new Succes(null, "Gagner 5 matchs");
+		Succes s6 = new Succes(null, "Gagner un pari");
+		Succes s7 = new Succes(null, "Numéro 1 au classement général");
 
 		succesRepos.save(s1);
 		succesRepos.save(s2);
 		succesRepos.save(s3);
+		succesRepos.save(s4);
+		succesRepos.save(s5);
+		succesRepos.save(s6);
+		succesRepos.save(s7);
 
 		SuccesUtilisateur su1 = new SuccesUtilisateur(null, s1, u1);
-		SuccesUtilisateur su2 = new SuccesUtilisateur(null, s2, u5);
-		SuccesUtilisateur su3 = new SuccesUtilisateur(null, s3, u3);
+		SuccesUtilisateur su2 = new SuccesUtilisateur(null, s7, u5);
+		SuccesUtilisateur su3 = new SuccesUtilisateur(null, s1, u3);
+		SuccesUtilisateur su4 = new SuccesUtilisateur(null, s2, u1);
+		SuccesUtilisateur su5 = new SuccesUtilisateur(null, s2, u2);
+		SuccesUtilisateur su6 = new SuccesUtilisateur(null, s3, u1);
+		SuccesUtilisateur su7 = new SuccesUtilisateur(null, s3, u2);
+		SuccesUtilisateur su8 = new SuccesUtilisateur(null, s3, u3);
+		SuccesUtilisateur su9 = new SuccesUtilisateur(null, s3, u4);
+		SuccesUtilisateur su10 = new SuccesUtilisateur(null, s3, u5);
+		SuccesUtilisateur su11 = new SuccesUtilisateur(null, s4, u1);
+		SuccesUtilisateur su12 = new SuccesUtilisateur(null, s5, u1);
+		SuccesUtilisateur su13 = new SuccesUtilisateur(null, s5, u2);
 
 		succesUtilisateurRepos.save(su1);
 		succesUtilisateurRepos.save(su2);
 		succesUtilisateurRepos.save(su3);
-
+		succesUtilisateurRepos.save(su4);
+		succesUtilisateurRepos.save(su5);
+		succesUtilisateurRepos.save(su6);
+		succesUtilisateurRepos.save(su7);
+		succesUtilisateurRepos.save(su8);
+		succesUtilisateurRepos.save(su9);
+		succesUtilisateurRepos.save(su10);
+		succesUtilisateurRepos.save(su11);
+		succesUtilisateurRepos.save(su12);
+		succesUtilisateurRepos.save(su13);
 	}
 }
