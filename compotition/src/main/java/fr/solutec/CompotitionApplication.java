@@ -274,7 +274,7 @@ public class CompotitionApplication implements CommandLineRunner {
 		duelRepos.save(duel2);
 		duelRepos.save(duel3);
 		duelRepos.save(duel4);
-		duelRepos.save(duel5);
+		/*duelRepos.save(duel5);
 		duelRepos.save(duel6);
 		duelRepos.save(duel7);
 		duelRepos.save(duel8);
@@ -292,7 +292,7 @@ public class CompotitionApplication implements CommandLineRunner {
 		duelRepos.save(duel19);
 		duelRepos.save(duel20);
 		duelRepos.save(duel21);
-		duelRepos.save(duel22);
+		duelRepos.save(duel22);*/
 
 		CreationPari cp1 = new CreationPari(null, "Pari annuel", comp1);
 		CreationPari cp2 = new CreationPari(null, "Ce pari fait office de championnat du monde des parieurs", comp1);
