@@ -13,6 +13,8 @@ public interface UtilisateurRepository extends CrudRepository<Utilisateur, Long>
 
 	public Optional<Utilisateur> findByLogin(String login);
 
+	public Optional<Utilisateur> findByEmail(String email);
+
 	public void deleteByLogin(String login);
 
 	public List<Utilisateur> findAllByOrderByPointsGlobalDesc();
