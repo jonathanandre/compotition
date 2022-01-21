@@ -76,15 +76,15 @@ public class CompotitionApplication implements CommandLineRunner {
 		DateFormat d = new SimpleDateFormat("dd/MM/yyyy");
 		DateFormat d2 = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
 
-		Utilisateur u1 = new Utilisateur(null, "login", "mdp", "Nom", "Prénom", "prenom.nom@mail.com",
+		Utilisateur u1 = new Utilisateur(null, "Hunter", "hun", "Larson", "Nicky", "nicky.larson@mail.com",
 				d.parse("11/11/1997"), false, 1, 10);
-		Utilisateur u2 = new Utilisateur(null, "login2", "mdp2", "Nom2", "Prénom2", "prenom2.nom2@mail.com",
-				d.parse("01/01/2000"), false, 2, 20);
-		Utilisateur u3 = new Utilisateur(null, "login3", "mdp3", "Nom3", "Prénom3", "prenom3.nom3@mail.com",
+		Utilisateur u2 = new Utilisateur(null, "Superman", "sup", "Kent", "Clark", "clark.kent@mail.com",
+				d.parse("16/05/1980"), false, 2, 20);
+		Utilisateur u3 = new Utilisateur(null, "007", "jam", "Bond", "James", "james.bond@mail.com",
 				d.parse("11/11/1997"), false, 0, 50);
-		Utilisateur u4 = new Utilisateur(null, "login4", "mdp4", "Nom4", "Prénom4", "prenom4.nom4@mail.com",
-				d.parse("01/01/2000"), false, 4, 40);
-		Utilisateur u5 = new Utilisateur(null, "login5", "mdp5", "Nom5", "Prénom5", "prenom5.nom5@mail.com",
+		Utilisateur u4 = new Utilisateur(null, "Spiderman", "spi", "Parker", "Peter", "peter.parker@mail.com",
+				d.parse("06/03/1998"), false, 4, 40);
+		Utilisateur u5 = new Utilisateur(null, "Batman", "bat", "Wayne", "Bruce", "bruce.wayne@mail.com",
 				d.parse("01/01/2000"), false, 5, 0);
 
 		utilisateurRepos.save(u1);
@@ -104,7 +104,7 @@ public class CompotitionApplication implements CommandLineRunner {
 		messageRepos.save(m1);
 		messageRepos.save(m2);
 
-		Groupe g1 = new Groupe(null, "Ce soir c'est MATCH", "Groupe de 2?");
+		Groupe g1 = new Groupe(null, "Ce soir c'est MATCH", "Groupe pour FIFA");
 		Groupe g2 = new Groupe(null, "Dev7", "Compotition");
 		groupeRepos.save(g1);
 		groupeRepos.save(g2);
@@ -145,7 +145,7 @@ public class CompotitionApplication implements CommandLineRunner {
 		Conversation c5 = new Conversation(null, "il fait froid aujourd'hui", u2, g2);
 		Conversation c6 = new Conversation(null, "oui", u1, g2);
 		Conversation c7 = new Conversation(null, "non", u3, g2);
-		Conversation c8 = new Conversation(null, "testing", u3, null);
+		Conversation c8 = new Conversation(null, "bof", u3, null);
 
 		conversationRepos.save(c1);
 		conversationRepos.save(c2);
@@ -161,16 +161,16 @@ public class CompotitionApplication implements CommandLineRunner {
 				"championnat", "Championnat de billard entre l'utilisateur1 et l'utilisateur2 pendant 1 mois", false,
 				g1, u1, u1);
 		Competition comp2 = new Competition(null, "Bière-Pong", d2.parse("17/01/2022 18:30:00"),
-				d2.parse("17/01/2022 22:30:00"), "Crémaillère de Gaël", d2.parse("17/01/2022 17:30:00"), "tournoi",
+				d2.parse("17/01/2022 22:30:00"), "Crémaillère de Batman", d2.parse("17/01/2022 17:30:00"), "tournoi",
 				"Bière-pong facon tournoi entre 4 utilisateurs", false, g2, u2, null);
 		Competition comp3 = new Competition(null, "Fléchette", d2.parse("17/01/2022 21:30:00"), null,
-				"Gite en normandie", null, "match", "Match de fléchettes entre utilisateur1 et utilisateur2", false, g1,
+				"Gite en normandie", null, "match", "Match de fléchettes", false, g1,
 				u1, null);
-		Competition comp4 = new Competition(null, "Max de tucs", d2.parse("17/01/2022 17:30:00"), null, null,
+		Competition comp4 = new Competition(null, "Max de trucs", d2.parse("17/01/2022 17:30:00"), null, null,
 				d2.parse("17/01/2022 18:30:00"), "tournoi", "tournoi ouvert", false, null, u1, null);
-		Competition comp5 = new Competition(null, "Test", d2.parse("10/02/2022 18:30:00"),
+		Competition comp5 = new Competition(null, "Competition de Smash Bros", d2.parse("10/02/2022 18:30:00"),
 				d2.parse("17/02/2022 18:30:00"), null, null, "match", null, false, g1, u1, null);
-		Competition comp6 = new Competition(null, "Testing", d2.parse("10/02/2022 18:30:00"),
+		Competition comp6 = new Competition(null, "Match de VS Code", d2.parse("10/02/2022 18:30:00"),
 				d2.parse("17/02/2022 18:30:00"), "Voisins-le-Bretonneux", null, "match", null, true, null, u1, null);
 		Competition comp7 = new Competition(null, "tournoi régional de fusées artisanales",
 				d2.parse("10/02/2022 18:30:00"), d2.parse("17/02/2022 18:30:00"), "La Lune", null, "match", null, true,
@@ -298,7 +298,7 @@ public class CompotitionApplication implements CommandLineRunner {
 
 		CreationPari cp1 = new CreationPari(null, "Pari annuel", comp1);
 		CreationPari cp2 = new CreationPari(null, "Ce pari fait office de championnat du monde des parieurs", comp1);
-		CreationPari cp3 = new CreationPari(null, "....", comp2);
+		CreationPari cp3 = new CreationPari(null, "Qui est le meilleur developpeur?", comp2);
 
 		creationpariRepos.save(cp1);
 		creationpariRepos.save(cp2);
