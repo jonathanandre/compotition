@@ -158,14 +158,12 @@ public class CompotitionApplication implements CommandLineRunner {
 
 		Competition comp1 = new Competition(null, "Billard", d2.parse("17/01/2022 18:30:00"),
 				d2.parse("17/02/2022 18:30:00"), "Club 108, Croissy-sur-Seine", d2.parse("16/01/2022 18:30:00"),
-				"championnat", "Championnat de billard entre l'utilisateur1 et l'utilisateur2 pendant 1 mois", false,
-				g1, u1, u1);
+				"championnat", "Championnat de billard pendant 1 mois", false, g1, u1, u1);
 		Competition comp2 = new Competition(null, "Bière-Pong", d2.parse("17/01/2022 18:30:00"),
 				d2.parse("17/01/2022 22:30:00"), "Crémaillère de Batman", d2.parse("17/01/2022 17:30:00"), "tournoi",
 				"Bière-pong facon tournoi entre 4 utilisateurs", false, g2, u2, null);
 		Competition comp3 = new Competition(null, "Fléchette", d2.parse("17/01/2022 21:30:00"), null,
-				"Gite en normandie", null, "match", "Match de fléchettes", false, g1,
-				u1, null);
+				"Gite en normandie", null, "match", "Match de fléchettes", false, g1, u1, null);
 		Competition comp4 = new Competition(null, "Max de trucs", d2.parse("17/01/2022 17:30:00"), null, null,
 				d2.parse("17/01/2022 18:30:00"), "tournoi", "tournoi ouvert", false, null, u1, null);
 		Competition comp5 = new Competition(null, "Competition de Smash Bros", d2.parse("10/02/2022 18:30:00"),
