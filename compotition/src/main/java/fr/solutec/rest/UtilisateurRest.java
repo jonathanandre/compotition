@@ -47,7 +47,7 @@ public class UtilisateurRest {
 		return utilisateurRepos.findByLogin(login);
 	}
 
-	@GetMapping("utilisateur/amitie2/{login}")
+	@GetMapping("utilisateur/amitie2/{email}")
 	public Optional<Utilisateur> getInformationsUtilisateurByEmail(@PathVariable String email) {
 		return utilisateurRepos.findByLogin(email);
 	}
